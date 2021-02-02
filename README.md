@@ -1,2 +1,2 @@
-# READ ME (but actually a look-at-me)
+# READ ME (but actually look-at-me)
 ![title](Images/test.jpg)
