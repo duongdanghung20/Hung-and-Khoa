@@ -1,5 +1,5 @@
 package a1_BI10_073;
-import a1_BI10_073.utils.*;
+import utils.*;
 
 
 /**
