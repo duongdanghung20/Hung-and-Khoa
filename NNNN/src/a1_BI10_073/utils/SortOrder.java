@@ -1,0 +1,16 @@
+package a1_BI10_073.utils;
+
+/**
+ * @overview 
+ *  Used by {@link Sorted} to define the sorting order.
+ *  
+ * @author dmle
+ *
+ * @version 2017 
+ */
+public enum SortOrder {
+  /**ascending */
+  Asc,
+  /**descending*/
+  Desc
+}
