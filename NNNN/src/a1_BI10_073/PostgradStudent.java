@@ -15,7 +15,8 @@ import java.math.*;
  * @author Duong Dang Hung
  */
 public class PostgradStudent extends Student {
-
+    private static final int MIN_ID = 100000001;
+    private static final int MAX_ID = 1000000000;
     @DomainConstraint(type = "Float", mutable = true, optional = false, min = 0.0, max = 4.0)
     private float gpa;
 
@@ -27,15 +28,13 @@ public class PostgradStudent extends Student {
      *              print error message
      *
      */
-    public PostgradStudent(@AttrRef("id") int i,@AttrRef("name") String n,
-                            @AttrRef("phoneNumber") String p, @AttrRef("address") String a, @AttrRef("gpa") float g){
-        super(i,n,p,a);
-
-        if(!validateGpa(g)) {
+    public PostgradStudent(@AttrRef("id") int id,@AttrRef("name") String name, @AttrRef("phoneNumber") String phoneNumber, @AttrRef("address") String address, @AttrRef("gpa") float gpa) {
+        super(id,name,phoneNumber,address);
+        if(!validateGpa(gpa)) {
             System.err.println("PostgradStudent.init: invalid gpa");
         }
         else {
-            this.gpa = g;
+            this.gpa = gpa;
         }
     }
 
@@ -111,11 +110,11 @@ public class PostgradStudent extends Student {
      *              return false
      */
     @Override
-    @DomainConstraint(type = "Integer", min = 1.0E8+1, max = 1.0E9, optional = false)
+    @DomainConstraint(type = "Integer", min = MIN_ID, max = MAX_ID, optional = false)
     protected boolean validateID(int i) {
         if(!super.validateID(i))
             return false;
-        if(i < 1.0E8 + 1 || i > 1.0E9)
+        if(i < MIN_ID || i > MAX_ID)
             return false;
 
         return true;

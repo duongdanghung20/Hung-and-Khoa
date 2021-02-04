@@ -6,10 +6,10 @@ import java.util.Objects;
 /**
  * @overview Student is a person who go to school
  * @attributes
- *  id          Integer     int
- *  name        String
+ *  id  Integer int
+ *  name    String
  *  phoneNumber String
- *  address     String
+ *  address String
  * @object
  *  A typical Student is s = <i,n,p,a>, where id(i), name(n), phoneNumber(p), address(a).
  * @abstract_properties
@@ -21,16 +21,14 @@ import java.util.Objects;
  */
 
 public class Student implements Comparable<Student> {
-
-    @DomainConstraint(type = "Integer", mutable = false, optional = false, min = 1, max = 1.0E9)
+    private static final int MIN_ID = 1;
+    private static final int MAX_ID = 1000000000;
+    @DomainConstraint(type = "Integer", mutable = false, optional = false, min = MIN_ID, max = MAX_ID)
     private int id;
-
     @DomainConstraint(type = "String", mutable = true, optional = false, length = 50)
     private String name;
-
     @DomainConstraint(type = "String", mutable = true, optional = false, length = 10)
     private String phoneNumber;
-
     @DomainConstraint(type = "String", mutable = true, optional = false, length = 100)
     private String address;
 
@@ -38,32 +36,30 @@ public class Student implements Comparable<Student> {
     // constructor methods
     /**
      * @effects
-     *            if i,n,p,a are valid
-     *              initialise this as Student:<i,n,p,a>
+     *            if id, name, phoneNumber, address are valid
+     *              initialise this as Student:<id,name,phoneNumber,address>
      *            else
      *              throws NotPossibleException
      *
      */
-    public Student(@AttrRef("id") int i, @AttrRef("name") String n,
-                   @AttrRef("phoneNumber") String p, @AttrRef("address") String a)
+    public Student(@AttrRef("id") int id, @AttrRef("name") String name, @AttrRef("phoneNumber") String phoneNumber, @AttrRef("address") String address)
             throws NotPossibleException {
-        if(!validateID(i)) {
-            throw new NotPossibleException("Student.init: invalid id: " + i);
+        if (!validateID(id)) {
+            throw new NotPossibleException("Student.init: invalid id: " + id);
         }
-        if(!validateName(n)) {
-            throw new NotPossibleException("Student.init: invalid name: " + n);
+        if (!validateName(name)) {
+            throw new NotPossibleException("Student.init: invalid name: " + name);
         }
-        if(!validatePhoneNumber(p)) {
-            throw new NotPossibleException("Student.init: invalid phone number: " + p);
+        if (!validatePhoneNumber(phoneNumber)) {
+            throw new NotPossibleException("Student.init: invalid phoneNumber: " + phoneNumber);
         }
-        if(!validateAddress(a)) {
-            throw new NotPossibleException("Student.init: invalid address: " + a);
+        if (!validateAddress(address)) {
+            throw new NotPossibleException("Student.init: invalid address: " + address);
         }
-        // all are valid
-        this.id = i;
-        this.name = n;
-        this.phoneNumber = p;
-        this.address = a;
+        this.id = id;
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
     }
 
     // methods
@@ -164,7 +160,7 @@ public class Student implements Comparable<Student> {
      *      return false
      */
     protected boolean validateID(int i) {
-        if (i<1 || i>1.0E9) {
+        if (i<MIN_ID || i>MAX_ID) {
             return false;
         }
         return true;
@@ -220,19 +216,17 @@ public class Student implements Comparable<Student> {
      *      return false
      */
     private boolean validate(int i, String n, String p, String a) {
-        return(validateName(n) && validatePhoneNumber(p) &&
-                validateID(i) && validateAddress(a));
+        return(validateName(n) && validatePhoneNumber(p) && validateID(i) && validateAddress(a));
     }
 
     /**
      * @effects
-     *  if this is valid
+     *  if this satisfies rep invariant
      *      return true
      *  else
      *      return false
      */
-    @DOpt(type = OptType.Helper)
-    public boolean repOK() { return validate(this.id, this.name, this.phoneNumber, this.address); }
+    public boolean repOK() { return validate(id, name, phoneNumber, address); }
 
     @Override
     public String toString() {

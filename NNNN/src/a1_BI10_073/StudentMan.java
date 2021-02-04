@@ -13,7 +13,7 @@ public class StudentMan {
         // create objects
         try {
             Student s;
-            s = new UndergradStudent((int) 1.0E5 + 2, "Duong Dang Hung", "0886865966", "USTH");
+            s = new UndergradStudent(100002, "Duong Dang Hung", "0886865966", "USTH");
             // use objects
             System.out.println(s.toString());
             System.out.println("-Id: " + s.getId());
@@ -26,7 +26,7 @@ public class StudentMan {
 
         try {
             PostgradStudent s;
-            s = new PostgradStudent((int) 1.0E8 + 2, "Bui Bich Ngoc", "0222222222", "Banking Academy", 4);
+            s = new PostgradStudent((int) 100000002, "Bui Bich Ngoc", "0222222222", "Banking Academy", 4);
             System.out.println("\n" + s.toString());
             System.out.println("-Id: " + s.getId());
             System.out.println("-Name: " + s.getName());
@@ -37,8 +37,8 @@ public class StudentMan {
             e.printStackTrace();
         }
 
-        Student s1 = new Student((int) 1.0E5 + 2, "Duong Dang Hung", "0886865966", "USTH");
-        Student s2 = new Student((int) 1.0E8 + 2, "Bui Bich Ngoc", "0222222222", "Banking Academy");
+        Student s1 = new Student( 100002, "Duong Dang Hung", "0886865966", "USTH");
+        Student s2 = new Student(100000002, "Bui Bich Ngoc", "0222222222", "Banking Academy");
         if( s1.compareTo(s2) > 0 ) {
             System.out.println("\nHung before Ngoc");
         }

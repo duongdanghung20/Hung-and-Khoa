@@ -11,20 +11,23 @@ import utils.*;
  * @author Duong Dang Hung
  */
 public class UndergradStudent extends Student {
-
+    private static final int MIN_ID = 100000;
+    private static final int MAX_ID = 100000000;
     /**
      * @effects
-     *            if i,n,p,a are valid
-     *              initialise this as UndergradStudent:<i,n,p,a>
+     *            if id, name, phoneNumber, address are valid
+     *              initialise this as UndergradStudent:<id, name, phoneNumber, address>
      *            else
      *              print error message
      *
      */
-    public UndergradStudent(@AttrRef("id") int i,@AttrRef("name") String n,
-                            @AttrRef("phoneNumber") String p,@AttrRef("address") String a){
-        super(i,n,p,a);
+    public UndergradStudent(@AttrRef("id") int id, @AttrRef("name") String name, @AttrRef("phoneNumber") String phoneNumber, @AttrRef("address") String address) throws NotPossibleException {
+        super(id, name, phoneNumber, address);
     }
 
+    /**
+     * @effects return a string present UndergradStudent
+     */
     @Override
     public String toString() {
         return "UndergradStudent(" + getName() + ")";
@@ -38,11 +41,11 @@ public class UndergradStudent extends Student {
      *              return false
      */
     @Override
-    @DomainConstraint(type = "Integer", min = 1.0E5, max = 1.0E8, optional = false)
+    @DomainConstraint(type = "Integer", min = MIN_ID, max = MAX_ID, optional = false)
     protected boolean validateID(int i) {
         if(!super.validateID(i))
             return false;
-        if(i < 1.0E5 || i > 1.0E8)
+        if(i < MIN_ID || i > MAX_ID)
             return false;
 
         return true;
