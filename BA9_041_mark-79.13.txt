@@ -1,0 +1,244 @@
+---------------------
+Program Marker Report
+---------------------
+
++--Input:
+Program id: BA9_041
+Program's package directory: /data/projects/usth/SE/2020/assessment/assignments/a1/submissions/B2-ICT Software Engineering-Assignment 1-4105/Long Đào Hải_4743_assignsubmission_file_/a1_BA9_041
+Solution program package: vn.edu.usth.se.model.a1
+Program type: null
+Test suite class: class vn.edu.usth.se.tcdefs.a1.TestSuiteCourseMan
+Marking function: vn.edu.usth.se.markingfunc.MarkingFuncCourseMan
+Report directory: /data/projects/usth/SE/2020/assessment/assignments/a1/marks
+---
+
++--Design:
+  +--a1_BA9_041.Student:
+    +--Class header:
+    ClassInterface(s): 1.00
+
+    Class header Total: 1.00
+    ---
+    +--Representation:
+    Field: id: 1.00
+    Field: name: 1.00
+    Field: phoneNumber: 1.00
+    Field: address: 1.00
+
+    Representation Total: 0.00
+    ---
+    +--Operations:
+      +--Method: Student:
+      behaviour desc: ✔
+      parameters: ✔
+      score: 1.00
+      ---
+      +--Method: getName:
+      behaviour desc: ✔
+      parameters: ✔
+      score: 1.00
+      ---
+      +--Method: toString:
+      behaviour desc: ✔
+      parameters: ✔
+      score: 1.00
+      ---
+      +--Method: compareTo:
+      behaviour desc: ✔
+      parameters: ❌ (wrong definition)
+      score: 0.50
+      ---
+      +--Method: setName:
+      behaviour desc: ✔
+      parameters: ✔
+      score: 1.00
+      ---
+      +--Method: getId:
+      behaviour desc: ✔
+      parameters: ✔
+      score: 1.00
+      ---
+      +--Method: getAddress:
+      behaviour desc: ✔
+      parameters: ✔
+      score: 1.00
+      ---
+      +--Method: repOK:
+      behaviour desc: ✔
+      parameters: ✔
+      score: 1.00
+      ---
+      +--Method: setPhoneNumber:
+      behaviour desc: ✔
+      parameters: ✔
+      score: 1.00
+      ---
+      +--Method: setAddress:
+      behaviour desc: ✔
+      parameters: ✔
+      score: 1.00
+      ---
+      +--Method: getPhoneNumber:
+      behaviour desc: ✔
+      parameters: ✔
+      score: 1.00
+      ---
+
+    Operations Total: 0.96
+    ---
+
+  a1_BA9_041.Student Total: 0.68
+  ---
+  +--a1_BA9_041.UndergradStudent:
+    +--Class header:
+
+    Class header Total: 0.00
+    ---
+    +--Representation:
+    ❌ Error: Representation is NOT expected but specified
+
+    Representation Total: 0.00
+    ---
+    +--Operations:
+      +--Method: UndergradStudent:
+      behaviour desc: ✔
+      parameters: ✔
+      score: 1.00
+      ---
+      +--Method: toString:
+      behaviour desc: ✔
+      parameters: ✔
+      score: 1.00
+      ---
+
+    Operations Total: 1.00
+    ---
+
+  a1_BA9_041.UndergradStudent Total: 0.50
+  ---
+  +--a1_BA9_041.PostgradStudent:
+    +--Class header:
+
+    Class header Total: 0.00
+    ---
+    +--Representation:
+    Field: gpa: 0.88
+    ❌ Error: Found 4 illegal fields:  penalty = -80.00%
+
+    Representation Total: 0.17
+    ---
+    +--Operations:
+      +--Method: PostgradStudent:
+      behaviour desc: ❌ (missing or incomplete)
+      parameters: ✔
+      score: 0.50
+      ---
+      +--Method: toString:
+      behaviour desc: ✔
+      parameters: ✔
+      score: 1.00
+      ---
+      +--Method: repOK:
+      score: 0.0 (❌ incorrectly defined or missing)
+      ---
+      +--Method: setGpa:
+      behaviour desc: ✔
+      parameters: ✔
+      score: 1.00
+      ---
+      +--Method: getGpa:
+      behaviour desc: ✔
+      parameters: ✔
+      score: 1.00
+      ---
+
+    Operations Total: 0.70
+    ---
+
+  a1_BA9_041.PostgradStudent Total: 0.40
+  ---
+
+Design Total: 56.03
+---
+
++--Code Testing:
+  +--a1_BA9_041.Student:
+    +--Method: Student:
+    result: ❌ (expecting 'class utils.NotPossibleException' but not observed (for some tests))
+    score: 0.88
+    ---
+    +--Method: setName:
+    result: ❌ (expecting 'class utils.NotPossibleException' but not observed (for some tests))
+    score: 0.86
+    ---
+    +--Errors:
+    setName & getName: ❌ (result(s) of one or both are wrong (for some tests))
+    setPhoneNumber & getPhoneNumber: ❌ (result(s) of one or both are wrong (for some tests))
+    setAddress & getAddress: ❌ (result(s) of one or both are wrong (for some tests))
+    ---
+    +--Method: setPhoneNumber:
+    result: ❌ (expecting 'class utils.NotPossibleException' but not observed (for some tests))
+    score: 0.86
+    ---
+    +--Method: setAddress:
+    result: ❌ (expecting 'class utils.NotPossibleException' but not observed (for some tests))
+    score: 0.86
+    ---
+    +--Method: getId:
+    score: 1.00
+    ---
+    +--Method: getName:
+    score: 0.86
+    ---
+    +--Method: getPhoneNumber:
+    score: 0.86
+    ---
+    +--Method: getAddress:
+    score: 0.86
+    ---
+    +--Method: toString:
+    score: 1.00
+    ---
+    +--Method: compareTo:
+    score: 1.00
+    ---
+
+  a1_BA9_041.Student Total: 0.89
+  ---
+  +--a1_BA9_041.UndergradStudent:
+    +--Method: UndergradStudent:
+    result: ❌ (expecting 'class utils.NotPossibleException' but not observed (for some tests))
+    score: 0.88
+    ---
+    +--Method: toString:
+    score: 1.00
+    ---
+
+  a1_BA9_041.UndergradStudent Total: 0.88
+  ---
+  +--a1_BA9_041.PostgradStudent:
+    +--Method: PostgradStudent:
+    result: ❌ (expecting 'class utils.NotPossibleException' but not observed (for some tests))
+    score: 0.83
+    ---
+    +--Method: setGpa:
+    score: 1.00
+    ---
+    +--Method: getGpa:
+    score: 1.00
+    ---
+    +--Method: toString:
+    score: 1.00
+    ---
+
+  a1_BA9_041.PostgradStudent Total: 0.89
+  ---
+
+Code Testing Total: 89.03
+---
+
++--Summary:
+
+Summary Total: 79.13
+---
+

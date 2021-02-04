@@ -1,0 +1,221 @@
+---------------------
+Program Marker Report
+---------------------
+
++--Input:
+Program id: BI10_073
+Program's package directory: /data/projects/usth/SE/2020/assessment/assignments/a1/submissions/B2-ICT Software Engineering-Assignment 1-4105/Hưng Dương Đăng_4755_assignsubmission_file_/a1_BI10_073
+Solution program package: vn.edu.usth.se.model.a1
+Program type: null
+Test suite class: class vn.edu.usth.se.tcdefs.a1.TestSuiteCourseMan
+Marking function: vn.edu.usth.se.markingfunc.MarkingFuncCourseMan
+Report directory: /data/projects/usth/SE/2020/assessment/assignments/a1/marks
+---
+
++--Design:
+  +--a1_BI10_073.Student:
+    +--Class header:
+    ClassInterface(s): 1.00
+
+    Class header Total: 1.00
+    ---
+    +--Representation:
+    ❌ Error: Representation is expected but empty
+
+    Representation Total: 0.00
+    ---
+    +--Operations:
+      +--Method: Student:
+      behaviour desc: ✔
+      parameters: ❌ (wrong definition)
+      score: 0.50
+      ---
+      +--Method: getName:
+      behaviour desc: ✔
+      parameters: ✔
+      score: 1.00
+      ---
+      +--Method: toString:
+      behaviour desc: ✔
+      parameters: ✔
+      score: 1.00
+      ---
+      +--Method: compareTo:
+      behaviour desc: ✔
+      parameters: ✔
+      score: 1.00
+      ---
+      +--Method: setName:
+      behaviour desc: ✔
+      parameters: ✔
+      score: 1.00
+      ---
+      +--Method: getId:
+      behaviour desc: ✔
+      parameters: ✔
+      score: 1.00
+      ---
+      +--Method: getAddress:
+      behaviour desc: ✔
+      parameters: ✔
+      score: 1.00
+      ---
+      +--Method: repOK:
+      behaviour desc: ✔
+      parameters: ✔
+      score: 1.00
+      ---
+      +--Method: setPhoneNumber:
+      behaviour desc: ✔
+      parameters: ✔
+      score: 1.00
+      ---
+      +--Method: setAddress:
+      behaviour desc: ✔
+      parameters: ✔
+      score: 1.00
+      ---
+      +--Method: getPhoneNumber:
+      behaviour desc: ✔
+      parameters: ✔
+      score: 1.00
+      ---
+
+    Operations Total: 0.92
+    ---
+
+  a1_BI10_073.Student Total: 0.66
+  ---
+  +--a1_BI10_073.UndergradStudent:
+    +--Class header:
+    @overview: 1.00
+    @attributes: 0.00
+    @object: 0.00
+    @abstract_properties: 1.00
+
+    Class header Total: 0.50
+    ---
+    +--Representation:
+
+    Representation Total: 1.00
+    ---
+    +--Operations:
+      +--Method: UndergradStudent:
+      behaviour desc: ✔
+      parameters: ❌ (wrong definition)
+      score: 0.50
+      ---
+      +--Method: toString:
+      behaviour desc: ✔
+      parameters: ✔
+      score: 1.00
+      ---
+
+    Operations Total: 0.75
+    ---
+
+  a1_BI10_073.UndergradStudent Total: 0.78
+  ---
+  +--a1_BI10_073.PostgradStudent:
+    +--Class header:
+    @overview: 1.00
+    @attributes: 1.00
+    @object: 1.00
+    @abstract_properties: 1.00
+
+    Class header Total: 1.00
+    ---
+    +--Representation:
+    ❌ Error: Representation is expected but empty
+
+    Representation Total: 0.00
+    ---
+    +--Operations:
+      +--Method: PostgradStudent:
+      behaviour desc: ✔
+      parameters: ❌ (wrong definition)
+      score: 0.50
+      ---
+      +--Method: toString:
+      behaviour desc: ✔
+      parameters: ✔
+      score: 1.00
+      ---
+      +--Method: repOK:
+      behaviour desc: ✔
+      parameters: ✔
+      score: 1.00
+      ---
+      +--Method: setGpa:
+      behaviour desc: ✔
+      parameters: ✔
+      score: 1.00
+      ---
+      +--Method: getGpa:
+      behaviour desc: ✔
+      parameters: ✔
+      score: 1.00
+      ---
+
+    Operations Total: 0.90
+    ---
+
+  a1_BI10_073.PostgradStudent Total: 0.65
+  ---
+
+Design Total: 67.92
+---
+
++--Code Testing:
+  +--a1_BI10_073.Student:
+    +--Errors:
+    constructor: ❌ (not found (not the expected constructor OR incorrectly defined))
+    create test data: ❌ failed to formulate test data for some extra operations, due to: due to: 
+utils.NotPossibleException: TestToolkit.parseAttribValArrStr: not a domain field: a1_BI10_073.Student.id
+	at vn.edu.hanu.tools.testing.TestToolkit.parseAttribValArrStr(TestToolkit.java:879)
+	at vn.edu.hanu.tools.testing.TestToolkit.getMethodTDSes(TestToolkit.java:285)
+	at vn.edu.hanu.tools.testing.ClassTester.getMethodTDSes(ClassTester.java:405)
+	at vn.edu.hanu.tools.testing.DClassTester.runAdditionalOptTests(DClassTester.java:197)
+	at vn.edu.hanu.tools.testing.DClassTester.run(DClassTester.java:161)
+	at vn.edu.hanu.tools.pgmarker.oop.OOClassMarker.markCode(OOClassMarker.java:111)
+	at vn.edu.hanu.tools.pgmarker.PgMarker.markCode(PgMarker.java:874)
+	at vn.edu.hanu.tools.pgmarker.PgMarker.markProgram(PgMarker.java:659)
+	at vn.edu.hanu.tools.pgmarker.PgMarker.run(PgMarker.java:182)
+	at vn.edu.usth.se.apps.y2021.PgMarkerSE.main(PgMarkerSE.java:81)
+
+    ---
+    +--Method: Student:
+    score: 0.00
+    ---
+
+  a1_BI10_073.Student Total: 0.00
+  ---
+  +--a1_BI10_073.UndergradStudent:
+    +--Errors:
+    constructor: ❌ (not found (not the expected constructor OR incorrectly defined))
+    ---
+    +--Method: UndergradStudent:
+    score: 0.00
+    ---
+
+  a1_BI10_073.UndergradStudent Total: 0.00
+  ---
+  +--a1_BI10_073.PostgradStudent:
+    +--Errors:
+    constructor: ❌ (not found (not the expected constructor OR incorrectly defined))
+    ---
+    +--Method: PostgradStudent:
+    score: 0.00
+    ---
+
+  a1_BI10_073.PostgradStudent Total: 0.00
+  ---
+
+Code Testing Total: 0.00
+---
+
++--Summary:
+
+Summary Total: 20.37
+---
+
