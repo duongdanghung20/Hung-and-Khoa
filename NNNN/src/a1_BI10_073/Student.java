@@ -32,7 +32,6 @@ public class Student implements Comparable<Student> {
     @DomainConstraint(type = "String", mutable = true, optional = false, length = 100)
     private String address;
 
-
     // constructor methods
     /**
      * @effects
@@ -174,7 +173,7 @@ public class Student implements Comparable<Student> {
      *      return false
      */
     private boolean validateName(String n) {
-        if (n == null || n.length() > 50) {
+        if (n == null || n.length() > 50 || n.isBlank() || n.isEmpty()) {
             return false;
         }
         return true;
@@ -188,7 +187,7 @@ public class Student implements Comparable<Student> {
      *      return false
      */
     private boolean validatePhoneNumber(String p) {
-        if (p == null || p.length() > 10) {
+        if (p == null || p.length() > 10 || p.isBlank() || p.isEmpty()) {
             return false;
         }
         return true;
@@ -202,7 +201,7 @@ public class Student implements Comparable<Student> {
      *      return false
      */
     private boolean validateAddress(String a) {
-        if (a == null || a.length() > 100) {
+        if (a == null || a.length() > 100 || a.isBlank() || a.isEmpty()) {
             return false;
         }
         return true;

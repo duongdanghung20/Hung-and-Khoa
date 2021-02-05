@@ -96,7 +96,7 @@ public class PostgradStudent extends Student {
      *    return false
      */
     private boolean validateGpa(float gpa) {
-        if (gpa < 0.0 || gpa > 4.0 || (Object) gpa == null) {
+        if (gpa < 0.0 || gpa > 4.0) {
             return false;
         }
         return true;

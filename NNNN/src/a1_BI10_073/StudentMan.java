@@ -13,7 +13,7 @@ public class StudentMan {
         // create objects
         try {
             Student s;
-            s = new UndergradStudent(100002, "Duong Dang Hung", "0886865966", "USTH");
+            s = new UndergradStudent( 100002, "Duong Dang Hung", "0886865966", "USTH");
             // use objects
             System.out.println(s.toString());
             System.out.println("-Id: " + s.getId());
@@ -26,7 +26,7 @@ public class StudentMan {
 
         try {
             PostgradStudent s;
-            s = new PostgradStudent((int) 100000002, "Bui Bich Ngoc", "0222222222", "Banking Academy", 4);
+            s = new PostgradStudent(100000002, "Bui Bich Ngoc", "0222222222", "Banking Academy", 4);
             System.out.println("\n" + s.toString());
             System.out.println("-Id: " + s.getId());
             System.out.println("-Name: " + s.getName());
