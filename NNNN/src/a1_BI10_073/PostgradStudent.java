@@ -1,7 +1,5 @@
 package a1_BI10_073;
-import utils.*;
-import java.util.*;
-import java.math.*;
+import src.demo.utils.*;
 
 /**
  * @overview PostgradStudent is a person who go to school after completed Bachelor program
@@ -28,10 +26,11 @@ public class PostgradStudent extends Student {
      *              print error message
      *
      */
-    public PostgradStudent(@AttrRef("id") int id,@AttrRef("name") String name, @AttrRef("phoneNumber") String phoneNumber, @AttrRef("address") String address, @AttrRef("gpa") float gpa) {
+    public PostgradStudent(@AttrRef("id") int id,@AttrRef("name") String name, @AttrRef("phoneNumber") String phoneNumber, @AttrRef("address") String address, @AttrRef("gpa") float gpa)
+            throws NotPossibleException {
         super(id,name,phoneNumber,address);
         if(!validateGpa(gpa)) {
-            System.err.println("PostgradStudent.init: invalid gpa");
+            throw new NotPossibleException("PostgradStudent.init: invalid Gpa: " + gpa);
         }
         else {
             this.gpa = gpa;
@@ -57,11 +56,12 @@ public class PostgradStudent extends Student {
      *    print error message
      */
     @DOpt(type = OptType.Mutator) @AttrRef("gpa")
-    public void setGpa(float gpa) {
+    public boolean setGpa(float gpa) throws NotPossibleException {
         if (validateGpa(gpa)) {
             this.gpa = gpa;
+            return true;
         } else {
-            System.err.println("PostgradStudent.setGpa: gpa is not valid " + gpa);
+            throw new NotPossibleException("PostgradStudent.setGpa: invalid Gpa: " + gpa);
         }
     }
 

@@ -1,5 +1,5 @@
 package a1_BI10_073;
-import utils.*;
+import src.demo.utils.*;
 
 import java.util.Objects;
 
@@ -70,9 +70,10 @@ public class Student implements Comparable<Student> {
      *      throws NotPossibleException
      */
     @DOpt(type = OptType.Mutator) @AttrRef("name")
-    public void setName(String name) {
+    public boolean setName(String name) {
         if (validateName(name)) {
             this.name = name;
+            return true;
         }
         else {
             throw new NotPossibleException("Student.setName: invalid name: "+ name);
@@ -87,9 +88,11 @@ public class Student implements Comparable<Student> {
      *      throws NotPossibleException
      */
     @DOpt(type = OptType.Mutator) @AttrRef("phoneNumber")
-    public void setPhoneNumber(String phoneNumber) {
-        if(validatePhoneNumber(phoneNumber))
+    public boolean setPhoneNumber(String phoneNumber) {
+        if(validatePhoneNumber(phoneNumber)) {
             this.phoneNumber = phoneNumber;
+            return true;
+        }
         else
             throw new NotPossibleException("Student.setPhoneNumber: invalid phoneNumber: "+ phoneNumber);
     }
@@ -102,9 +105,11 @@ public class Student implements Comparable<Student> {
      *      throws NotPossibleException
      */
     @DOpt(type = OptType.Mutator) @AttrRef("address")
-    public void setAddress(String address) {
-        if(validateAddress(address))
+    public boolean setAddress(String address) {
+        if(validateAddress(address)) {
             this.address = address;
+            return true;
+        }
         else
             throw new NotPossibleException("Student.setAddress: invalid address: "+ address);
     }
