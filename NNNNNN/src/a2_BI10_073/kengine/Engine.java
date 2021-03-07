@@ -204,10 +204,11 @@ public class Engine {
     }
     else {
       this.tt.addDoc(d);
-      this.wt.addDoc(d);
+      Hashtable h = this.wt.addDoc(d);
       if (this.q != null) {
-        this.q
+        this.q.addDoc(d,h);
       }
+      return this.q;
     }
   }
 }

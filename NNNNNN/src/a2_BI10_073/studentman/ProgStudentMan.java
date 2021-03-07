@@ -337,7 +337,10 @@ public class ProgStudentMan {
      * @effects
      *   initialise this to include an empty set of objects and an empty engine
      */
-    public ProgStudentMan()
+    public ProgStudentMan() throws NotPossibleException {
+        engine = new Engine();
+        objects = new TreeSet<Student>();
+    }
 
     /**
      * @effects
@@ -347,7 +350,18 @@ public class ProgStudentMan {
      *     return a string containing each object in this.objects one per line
      */
     @Override
-    public String toString()
+    public String toString() {
+        if (objects.isEmpty() || objects == null) {
+            return ("empty");
+        }
+        else {
+            String str = new String();
+            for (Student object : this.objects) {
+                str = str.concat(object.toString() + "\n";
+            }
+            return str;
+        }
+    }
 
 
     /**
@@ -357,7 +371,14 @@ public class ProgStudentMan {
      *  else
      *    return false
      */
-    public boolean isEmpty()
+    public boolean isEmpty() {
+        if (objects.isEmpty() || objects == null) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
 
     /**
@@ -369,7 +390,15 @@ public class ProgStudentMan {
      *  else
      *    throws NotPossibleException
      */
-    public Student createStudent(Object[] data) throws NotPossibleException
+    public Student createStudent(Object[] data) throws NotPossibleException {
+        if () {
+            Student student = new Student((int) data[0], (String) data[1], (String) data[2], (String) data[3]);
+            return student;
+        }
+        else {
+            throw new NotPossibleException("Student.init: invalid data");
+        }
+    }
 
     /**
      * @requires
@@ -380,7 +409,15 @@ public class ProgStudentMan {
      *  else
      *    throws NotPossibleException
      */
-    public UndergradStudent createUndergradStudent(Object[] data) throws NotPossibleException
+    public UndergradStudent createUndergradStudent(Object[] data) throws NotPossibleException {
+        if () {
+            UndergradStudent undergradStudent = new UndergradStudent( (int) data[0], (String) data[1], (String) data[2], (String) data[3]);
+            return undergradStudent;
+        }
+        else {
+            throw new NotPossibleException("UndergradStudent.init: invalid data");
+        }
+    }
 
     /**
      * @requires
@@ -391,14 +428,26 @@ public class ProgStudentMan {
      *  else
      *    throws NotPossibleException
      */
-    public PostgradStudent createPostgradStudent(Object[] data) throws NotPossibleException
+    public PostgradStudent createPostgradStudent(Object[] data) throws NotPossibleException {
+        if () {
+            PostgradStudent postgradStudent = new PostgradStudent( (int) data[0], (String) data[1], (String) data[2], (String) data[3], (float) data[4]);
+            return postgradStudent;
+        }
+        else {
+            throw new NotPossibleException("PostgradStudent.init: invalid data");
+        }
+    }
 
     /**
      * @effects
      *   add c to this.objects and
      *   add to this.engine a Doc object created from c.toHtmlDoc
      */
-    public void addStudent(Student c)
+    public void addStudent(Student c) {
+        this.objects.add(c);
+        Doc d = new Doc(c.toHtmlDoc());
+        this.engine.addDoc(d);
+    }
 
     /**
      * @requires words != null /\ words.length > 0
@@ -409,5 +458,13 @@ public class ProgStudentMan {
      *   If fails to execute query using words
      *     throws NotPossibleException
      */
-    public Query search(String[] words) throws NotPossibleException
+    public Query search(String[] words) throws NotPossibleException {
+        if (words != null && words.length > 0) {
+            Query q = new Query();
+            
+        }
+        else {
+            throw new NotPossibleException("Fails to execute query using words");
+        }
+    }
 }
