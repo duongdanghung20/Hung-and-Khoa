@@ -357,7 +357,7 @@ public class ProgStudentMan {
         else {
             String str = new String();
             for (Student object : this.objects) {
-                str = str.concat(object.toString() + "\n";
+                str = str.concat(object.toString() + "\n");
             }
             return str;
         }
@@ -461,7 +461,6 @@ public class ProgStudentMan {
     public Query search(String[] words) throws NotPossibleException {
         if (words != null && words.length > 0) {
             Query q = new Query();
-            
         }
         else {
             throw new NotPossibleException("Fails to execute query using words");
