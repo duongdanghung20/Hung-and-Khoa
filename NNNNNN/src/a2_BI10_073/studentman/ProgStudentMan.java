@@ -385,14 +385,14 @@ public class ProgStudentMan {
      * @requires
      *  data contain id, name, phone, and address values (in that order)
      * @effects
-     *  if data contain valid values for Student
-     *    create and return a Student object from the data
+     *  if successfully creates a Student from data
+     *    return the Student object
      *  else
      *    throws NotPossibleException
      */
     public Student createStudent(Object[] data) throws NotPossibleException {
-        if () {
-            Student student = new Student((int) data[0], (String) data[1], (String) data[2], (String) data[3]);
+        Student student = new Student((int) data[0], (String) data[1], (String) data[2], (String) data[3]);
+        if (student.repOK()) {
             return student;
         }
         else {
@@ -404,14 +404,14 @@ public class ProgStudentMan {
      * @requires
      *  data contain id, name, phone, and address values (in that order)
      * @effects
-     *  if data contain valid values for UndergradStudent
-     *    create and return a UndergradStudent object from the data
+     *  if successfully creates an UndergradStudent from data
+     *    return the UndergradStudent object
      *  else
      *    throws NotPossibleException
      */
     public UndergradStudent createUndergradStudent(Object[] data) throws NotPossibleException {
-        if () {
-            UndergradStudent undergradStudent = new UndergradStudent( (int) data[0], (String) data[1], (String) data[2], (String) data[3]);
+        UndergradStudent undergradStudent = new UndergradStudent((int) data[0], (String) data[1], (String) data[2], (String) data[3]);
+        if (undergradStudent.repOK()) {
             return undergradStudent;
         }
         else {
@@ -423,18 +423,18 @@ public class ProgStudentMan {
      * @requires
      *  data contain id, name, phone, address, and gpa values (in that order)
      * @effects
-     *  if data contain valid values for PostgradStudent
-     *    create and return a PostgradStudent object from the data
+     *  if successfully creates a PostgradStudent from data
+     *    return the PostgradStudent object
      *  else
      *    throws NotPossibleException
      */
     public PostgradStudent createPostgradStudent(Object[] data) throws NotPossibleException {
-        if () {
-            PostgradStudent postgradStudent = new PostgradStudent( (int) data[0], (String) data[1], (String) data[2], (String) data[3], (float) data[4]);
+        PostgradStudent postgradStudent = new PostgradStudent((int) data[0], (String) data[1], (String) data[2], (String) data[3], (Float) data[4]);
+        if (postgradStudent.repOK()) {
             return postgradStudent;
         }
         else {
-            throw new NotPossibleException("PostgradStudent.init: invalid data");
+            throw new NotPossibleException("UndergradStudent.init: invalid data");
         }
     }
 

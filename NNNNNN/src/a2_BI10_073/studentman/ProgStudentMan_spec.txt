@@ -5,10 +5,10 @@ import java.util.Iterator;
 import java.util.Scanner;
 import java.util.TreeSet;
 
-import a2.kengine.Doc;
-import a2.kengine.DocCnt;
-import a2.kengine.Engine;
-import a2.kengine.Query;
+import vn.edu.usth.se.model.a2.kengine.Doc;
+import vn.edu.usth.se.model.a2.kengine.DocCnt;
+import vn.edu.usth.se.model.a2.kengine.Engine;
+import vn.edu.usth.se.model.a2.kengine.Query;
 import utils.DomainConstraint;
 import utils.NotPossibleException;
 
@@ -36,6 +36,12 @@ public class ProgStudentMan {
 
   private static final Scanner inputScanner = new Scanner(System.in);
   private final static String[] EmptyArr = {};
+
+  private static StringBuilder liner;
+  static {
+    liner = new StringBuilder();
+    for (int i=1; i <= 50; i++) liner.append("-");
+  }
   
   /**
    * @effects 
@@ -188,10 +194,11 @@ public class ProgStudentMan {
     if (isEmpty()) {
       System.out.println("No students");
     } else {
-      System.out.println("\nDisplaying student report (sorted by name)...");       
-      
+      System.out.println("\nDisplaying student report (sorted by name)...");
+      System.out.println(liner);
       String textReport = toString();
       System.out.println(textReport);
+      System.out.println(liner);
     }
   }
   
@@ -289,11 +296,10 @@ public class ProgStudentMan {
       System.out.println(hr);
       System.out.printf(rowFormat, "Documents", "Sum freqs");
       System.out.println(hr);
+
       matches = q.matchIterator();
-      
-      DocCnt m;
       while (matches.hasNext()) {
-        m = (DocCnt) matches.next();
+        DocCnt m = (DocCnt) matches.next();
         System.out.printf(rowFormat, m.getDoc().title(), m.getCount());
       }
       
@@ -351,7 +357,6 @@ public class ProgStudentMan {
    */
   @Override
   public String toString()
-  
 
   /**
    * @effects 
@@ -366,19 +371,19 @@ public class ProgStudentMan {
    * @requires 
    *  data contain id, name, phone, and address values (in that order)
    * @effects 
-   *  if data contain valid values for Student
-   *    create and return a Student object from the data
+   *  if successfully creates a Student from data
+   *    return the Student object
    *  else
    *    throws NotPossibleException 
    */
-  public Student createStudent(Object[] data) throws NotPossibleException
+  public Student createStudent(Object[] data)
   
   /**
    * @requires 
    *  data contain id, name, phone, and address values (in that order)
    * @effects 
-   *  if data contain valid values for UndergradStudent
-   *    create and return a UndergradStudent object from the data
+   *  if successfully creates an UndergradStudent from data
+   *    return the UndergradStudent object
    *  else
    *    throws NotPossibleException 
    */
@@ -388,8 +393,8 @@ public class ProgStudentMan {
    * @requires 
    *  data contain id, name, phone, address, and gpa values (in that order)
    * @effects 
-   *  if data contain valid values for PostgradStudent
-   *    create and return a PostgradStudent object from the data
+   *  if successfully creates a PostgradStudent from data
+   *    return the PostgradStudent object
    *  else
    *    throws NotPossibleException 
    */
@@ -413,3 +418,4 @@ public class ProgStudentMan {
    */
   public Query search(String[] words) throws NotPossibleException
 }
+
