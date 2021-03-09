@@ -434,7 +434,7 @@ public class ProgStudentMan {
             return postgradStudent;
         }
         else {
-            throw new NotPossibleException("UndergradStudent.init: invalid data");
+            throw new NotPossibleException("PostgradStudent.init: invalid data");
         }
     }
 
@@ -460,7 +460,11 @@ public class ProgStudentMan {
      */
     public Query search(String[] words) throws NotPossibleException {
         if (words != null && words.length > 0) {
-            Query q = new Query();
+            Engine e = new Engine();
+            e.queryFirst(words[0]);
+            for (int i = 1; i < words.length; i++) {
+                e.queryMore(words[i]);
+            }
         }
         else {
             throw new NotPossibleException("Fails to execute query using words");
