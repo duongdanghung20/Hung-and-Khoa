@@ -469,11 +469,7 @@ public class ProgStudentMan {
                 Doc d = new Doc(student.toHtmlDoc());
                 q = eng.addDoc(d);
             }
-            Query q2 = new Query();
-            for (int di = 0; di < q.size(); di++) {
-                Doc d = q.fetch(di);
-
-            }
+            return q;
         }
         else {
             throw new NotPossibleException("Fails to execute query using words");
