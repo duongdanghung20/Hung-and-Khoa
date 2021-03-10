@@ -1,0 +1,4 @@
+1. change all Student -> Doc (using toHtmlDoc) -> Store in query matches? 
+2. input all keys for query (using String[] words)
+3. check which objects whose HTML matches -> add to query (using addDoc)
+4. return query

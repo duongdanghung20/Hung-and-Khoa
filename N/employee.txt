@@ -1,0 +1,15 @@
+001
+Kirito
+SAO
+60
+45
+002
+Bell
+DanMachi
+50
+45
+003
+Raku
+Nisekoi
+50
+50

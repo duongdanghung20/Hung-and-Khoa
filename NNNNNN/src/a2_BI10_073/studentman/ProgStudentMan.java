@@ -460,10 +460,19 @@ public class ProgStudentMan {
      */
     public Query search(String[] words) throws NotPossibleException {
         if (words != null && words.length > 0) {
-            Engine e = new Engine();
-            e.queryFirst(words[0]);
+            Engine eng = new Engine();
+            Query q = eng.queryFirst(words[0]);
             for (int i = 1; i < words.length; i++) {
-                e.queryMore(words[i]);
+                q = eng.queryMore(words[i]);
+            }
+            for (Student student : this.objects) {
+                Doc d = new Doc(student.toHtmlDoc());
+                q = eng.addDoc(d);
+            }
+            Query q2 = new Query();
+            for (int di = 0; di < q.size(); di++) {
+                Doc d = q.fetch(di);
+
             }
         }
         else {
