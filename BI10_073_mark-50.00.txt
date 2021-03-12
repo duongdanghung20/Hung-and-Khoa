@@ -1,0 +1,239 @@
+---------------------
+Program Marker Report
+---------------------
+
++--Input:
+Program id: BI10_073
+Program's package directory: /data/projects/usth/SE/2020/assessment/assignments/a1redo3/submissions/A1-Redo3/Hưng Dương Đăng_5519_assignsubmission_file_/a1_BI10_073
+Solution program package: vn.edu.usth.se.model.a1
+Program type: null
+Test suite class: class vn.edu.usth.se.tcdefs.a1.TestSuiteStudentMan
+Marking function: vn.edu.usth.se.markingfunc.MarkingFuncStudentManRedo3
+Report directory: /data/projects/usth/SE/2020/assessment/assignments/a1redo3/marks
+---
+
++--Design:
+  +--a1_BI10_073.Student:
+    +--Class header:
+    ClassInterface(s): 1.00
+
+    Class header Total: 1.00
+    ---
+    +--Representation:
+    Field: id: 1.00
+    Field: name: 1.00
+    Field: phoneNumber: 1.00
+    Field: address: 1.00
+
+    Representation Total: 1.00
+    ---
+    +--Operations:
+      +--Method: Student:
+      behaviour desc: ✔
+      parameters: ✔
+      score: 1.00
+      ---
+      +--Method: getName:
+      behaviour desc: ✔
+      parameters: ✔
+      score: 1.00
+      ---
+      +--Method: toString:
+      behaviour desc: ✔
+      parameters: ✔
+      score: 1.00
+      ---
+      +--Method: compareTo:
+      behaviour desc: ✔
+      parameters: ✔
+      score: 1.00
+      ---
+      +--Method: setName:
+      behaviour desc: ✔
+      parameters: ✔
+      score: 1.00
+      ---
+      +--Method: getId:
+      behaviour desc: ✔
+      parameters: ✔
+      score: 1.00
+      ---
+      +--Method: getAddress:
+      behaviour desc: ✔
+      parameters: ✔
+      score: 1.00
+      ---
+      +--Method: repOK:
+      behaviour desc: ✔
+      parameters: ✔
+      score: 1.00
+      ---
+      +--Method: setPhoneNumber:
+      behaviour desc: ✔
+      parameters: ✔
+      score: 1.00
+      ---
+      +--Method: setAddress:
+      behaviour desc: ✔
+      parameters: ✔
+      score: 1.00
+      ---
+      +--Method: getPhoneNumber:
+      behaviour desc: ✔
+      parameters: ✔
+      score: 1.00
+      ---
+
+    Operations Total: 0.96
+    ---
+
+  a1_BI10_073.Student Total: 0.98
+  ---
+  +--a1_BI10_073.UndergradStudent:
+    +--Class header:
+    @overview: 1.00
+    @abstract_properties: 1.00
+
+    Class header Total: 1.00
+    ---
+    +--Representation:
+
+    Representation Total: 1.00
+    ---
+    +--Operations:
+      +--Method: UndergradStudent:
+      behaviour desc: ✔
+      parameters: ✔
+      score: 1.00
+      ---
+      +--Method: toString:
+      behaviour desc: ✔
+      parameters: ✔
+      score: 1.00
+      ---
+
+    Operations Total: 1.00
+    ---
+
+  a1_BI10_073.UndergradStudent Total: 1.00
+  ---
+  +--a1_BI10_073.PostgradStudent:
+    +--Class header:
+    @overview: 1.00
+    @attributes: 1.00
+    @object: 1.00
+    @abstract_properties: 1.00
+
+    Class header Total: 1.00
+    ---
+    +--Representation:
+    Field: gpa: 1.00
+
+    Representation Total: 1.00
+    ---
+    +--Operations:
+      +--Method: PostgradStudent:
+      behaviour desc: ✔
+      parameters: ✔
+      score: 1.00
+      ---
+      +--Method: toString:
+      behaviour desc: ✔
+      parameters: ✔
+      score: 1.00
+      ---
+      +--Method: repOK:
+      behaviour desc: ✔
+      parameters: ✔
+      score: 1.00
+      ---
+      +--Method: setGpa:
+      behaviour desc: ✔
+      parameters: ✔
+      score: 1.00
+      ---
+      +--Method: getGpa:
+      behaviour desc: ✔
+      parameters: ✔
+      score: 1.00
+      ---
+
+    Operations Total: 1.00
+    ---
+
+  a1_BI10_073.PostgradStudent Total: 1.00
+  ---
+
+Design Total: 98.96
+---
+
++--Code Testing:
+  +--a1_BI10_073.Student:
+    +--Method: Student:
+    score: 1.00
+    ---
+    +--Method: getId:
+    score: 1.00
+    ---
+    +--Method: setName:
+    score: 0.43
+    ---
+    +--Method: getName:
+    score: 1.00
+    ---
+    +--Method: setPhoneNumber:
+    score: 0.43
+    ---
+    +--Method: getPhoneNumber:
+    score: 1.00
+    ---
+    +--Method: setAddress:
+    score: 0.43
+    ---
+    +--Method: getAddress:
+    score: 1.00
+    ---
+    +--Method: toString:
+    score: 1.00
+    ---
+    +--Method: compareTo:
+    score: 1.00
+    ---
+
+  a1_BI10_073.Student Total: 0.81
+  ---
+  +--a1_BI10_073.UndergradStudent:
+    +--Method: UndergradStudent:
+    score: 1.00
+    ---
+    +--Method: toString:
+    score: 1.00
+    ---
+
+  a1_BI10_073.UndergradStudent Total: 1.00
+  ---
+  +--a1_BI10_073.PostgradStudent:
+    +--Method: PostgradStudent:
+    score: 1.00
+    ---
+    +--Method: setGpa:
+    score: 0.71
+    ---
+    +--Method: getGpa:
+    score: 1.00
+    ---
+    +--Method: toString:
+    score: 1.00
+    ---
+
+  a1_BI10_073.PostgradStudent Total: 0.94
+  ---
+
+Code Testing Total: 88.93
+---
+
++--Summary:
+
+Summary Total: 91.94
+---
+

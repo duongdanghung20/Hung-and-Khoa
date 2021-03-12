@@ -1,8 +1,10 @@
-package src.demo.kengineguide;
+package kengineguide;
 
 import java.io.File;
 
-import src.demo.kengine.*;
+import kengine.Doc;
+import kengine.Engine;
+import kengine.Query;
 
 /**
  * @overview 

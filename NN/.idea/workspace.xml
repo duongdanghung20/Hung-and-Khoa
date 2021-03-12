@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9deff907-9007-49d0-a693-8dd3b41479ad" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../untitled/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/untitled.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/out/production/N/a1_BI10_073/PostgradStudent.class" beforeDir="false" afterPath="$PROJECT_DIR$/../N/out/production/N/a1_BI10_073/PostgradStudent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/out/production/N/a1_BI10_073/Student.class" beforeDir="false" afterPath="$PROJECT_DIR$/../N/out/production/N/a1_BI10_073/Student.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/out/production/N/a1_BI10_073/UndergradStudent.class" beforeDir="false" afterPath="$PROJECT_DIR$/../N/out/production/N/a1_BI10_073/UndergradStudent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/out/production/N/src/demo/kengine/Comm.class" beforeDir="false" afterPath="$PROJECT_DIR$/../N/out/production/N/src/demo/kengine/Comm.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/out/production/N/src/demo/kengine/Doc$WordGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/../N/out/production/N/src/demo/kengine/Doc$WordGenerator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/out/production/N/src/demo/kengine/Doc.class" beforeDir="false" afterPath="$PROJECT_DIR$/../N/out/production/N/src/demo/kengine/Doc.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/out/production/N/src/demo/kengine/DocGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/../N/out/production/N/src/demo/kengine/DocGenerator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/out/production/N/src/demo/kengine/Engine.class" beforeDir="false" afterPath="$PROJECT_DIR$/../N/out/production/N/src/demo/kengine/Engine.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/out/production/N/src/demo/kengine/Helpers.class" beforeDir="false" afterPath="$PROJECT_DIR$/../N/out/production/N/src/demo/kengine/Helpers.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/out/production/N/src/demo/kengine/Query.class" beforeDir="false" afterPath="$PROJECT_DIR$/../N/out/production/N/src/demo/kengine/Query.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/out/production/N/src/demo/kengine/TitleTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/../N/out/production/N/src/demo/kengine/TitleTable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/out/production/N/src/demo/kengine/WordTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/../N/out/production/N/src/demo/kengine/WordTable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/out/production/N/src/demo/kengineguide/MyProgram.class" beforeDir="false" afterPath="$PROJECT_DIR$/../N/out/production/N/src/demo/kengineguide/MyProgram.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/out/production/N/utils/AttrRef.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/out/production/N/utils/DOpt.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/out/production/N/utils/DomainConstraint.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/out/production/N/utils/DuplicateException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/out/production/N/utils/NotImplementedException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/out/production/N/utils/NotPossibleException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/out/production/N/utils/OptType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/out/production/N/utils/SortOrder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/out/production/N/utils/Sorted.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/out/production/N/utils/TextIO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/out/production/N/utils/collections/Collection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/src/Animal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/src/Cat.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/src/Dog.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/src/Employee.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/src/EmployeeTestDrive.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/src/Interfaces.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/src/Mouse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/src/Vladimir.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/src/src.demo/kengine/Comm.java" beforeDir="false" afterPath="$PROJECT_DIR$/../N/src/src.demo/kengine/Comm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/src/src.demo/kengine/Doc.java" beforeDir="false" afterPath="$PROJECT_DIR$/../N/src/src.demo/kengine/Doc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/src/src.demo/kengine/DocCnt.java" beforeDir="false" afterPath="$PROJECT_DIR$/../N/src/src.demo/kengine/DocCnt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/src/src.demo/kengine/Engine.java" beforeDir="false" afterPath="$PROJECT_DIR$/../N/src/src.demo/kengine/Engine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/src/src.demo/kengine/Helpers.java" beforeDir="false" afterPath="$PROJECT_DIR$/../N/src/src.demo/kengine/Helpers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/src/src.demo/kengine/Query.java" beforeDir="false" afterPath="$PROJECT_DIR$/../N/src/src.demo/kengine/Query.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/src/src.demo/kengine/Sorting.java" beforeDir="false" afterPath="$PROJECT_DIR$/../N/src/src.demo/kengine/Sorting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/src/src.demo/kengine/TitleTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/../N/src/src.demo/kengine/TitleTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/src/src.demo/kengine/WordTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/../N/src/src.demo/kengine/WordTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/src/src.demo/kengineguide/MyProgram.java" beforeDir="false" afterPath="$PROJECT_DIR$/../N/src/src.demo/kengineguide/MyProgram.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/src/src.demo/utils/AttrRef.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/src/src.demo/utils/DOpt.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/src/src.demo/utils/DomainConstraint.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/src/src.demo/utils/DuplicateException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/src/src.demo/utils/NotImplementedException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/src/src.demo/utils/NotPossibleException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/src/src.demo/utils/OptType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/src/src.demo/utils/SortOrder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/src/src.demo/utils/Sorted.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/src/src.demo/utils/TextIO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/src/src.demo/utils/collections/Collection.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../N/src/veryBadVampire.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../NNNNNN/src/a2_BI10_073/studentman/PostgradStudent.java" beforeDir="false" afterPath="$PROJECT_DIR$/../NNNNNN/src/a2_BI10_073/studentman/PostgradStudent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../NNNNNN/src/a2_BI10_073/studentman/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/../NNNNNN/src/a2_BI10_073/studentman/Student.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1pfQpD9eGl2edQQdbV1mDv2CWlt" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RunManager">
+    <configuration name="MyProgram" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="kengineguide.MyProgram" />
+      <module name="NN" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="kengineguide.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.MyProgram" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9deff907-9007-49d0-a693-8dd3b41479ad" name="Default Changelist" comment="" />
+      <created>1615571847867</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1615571847867</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="440" y="94" key="#Project_Structure" timestamp="1615571878040">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="440" y="94" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1615571878040" />
+    <state x="739" y="261" key="FileChooserDialogImpl" timestamp="1615572086139">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="739" y="261" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1615572086139" />
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1615572309186">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1615572309186" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1615572309186">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1615572309186" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1615572309185">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1615572309185" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1615572309186">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1615572309186" />
+    <state x="342" y="140" key="new project wizard" timestamp="1615572086789">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="342" y="140" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1615572086789" />
+  </component>
+</project>

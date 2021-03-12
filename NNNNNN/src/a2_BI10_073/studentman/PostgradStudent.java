@@ -58,10 +58,9 @@ public class PostgradStudent extends Student {
      *    print error message
      */
     @DOpt(type = OptType.Mutator) @AttrRef("gpa")
-    public boolean setGpa(float gpa) throws NotPossibleException {
+    public void setGpa(float gpa) throws NotPossibleException {
         if (validateGpa(gpa)) {
             this.gpa = gpa;
-            return true;
         } else {
             throw new NotPossibleException("PostgradStudent.setGpa: invalid Gpa: " + gpa);
         }

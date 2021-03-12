@@ -71,10 +71,9 @@ public class Student implements Comparable<Student>, Document {
      *      throws NotPossibleException
      */
     @DOpt(type = OptType.Mutator) @AttrRef("name")
-    public boolean setName(String name) {
+    public void setName(String name) {
         if (validateName(name)) {
             this.name = name;
-            return true;
         }
         else {
             throw new NotPossibleException("Student.setName: invalid name: "+ name);
@@ -89,10 +88,9 @@ public class Student implements Comparable<Student>, Document {
      *      throws NotPossibleException
      */
     @DOpt(type = OptType.Mutator) @AttrRef("phoneNumber")
-    public boolean setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         if(validatePhoneNumber(phoneNumber)) {
             this.phoneNumber = phoneNumber;
-            return true;
         }
         else
             throw new NotPossibleException("Student.setPhoneNumber: invalid phoneNumber: "+ phoneNumber);
@@ -106,10 +104,9 @@ public class Student implements Comparable<Student>, Document {
      *      throws NotPossibleException
      */
     @DOpt(type = OptType.Mutator) @AttrRef("address")
-    public boolean setAddress(String address) {
+    public void setAddress(String address) {
         if(validateAddress(address)) {
             this.address = address;
-            return true;
         }
         else
             throw new NotPossibleException("Student.setAddress: invalid address: "+ address);
