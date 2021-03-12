@@ -464,10 +464,6 @@ public class ProgStudentMan {
             for (int i = 1; i < words.length; i++) {
                 q = this.engine.queryMore(words[i]);
             }
-//            for (Student student : this.objects) {
-//                Doc d = new Doc(student.toHtmlDoc());
-//                q = this.engine.addDoc(d);
-//            }
             return q;
         }
         else {
