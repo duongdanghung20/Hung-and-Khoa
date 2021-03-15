@@ -355,7 +355,7 @@ public class ProgStudentMan {
             return ("empty");
         }
         else {
-            String str = new String();
+            String str = "";
             for (Student object : this.objects) {
                 str = str.concat(object.toString() + "\n");
             }

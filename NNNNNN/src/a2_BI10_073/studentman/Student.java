@@ -71,12 +71,13 @@ public class Student implements Comparable<Student>, Document {
      *      throws NotPossibleException
      */
     @DOpt(type = OptType.Mutator) @AttrRef("name")
-    public void setName(String name) {
+    public boolean setName(String name) {
         if (validateName(name)) {
             this.name = name;
+            return true;
         }
         else {
-            throw new NotPossibleException("Student.setName: invalid name: "+ name);
+            return false;
         }
     }
 
@@ -88,12 +89,13 @@ public class Student implements Comparable<Student>, Document {
      *      throws NotPossibleException
      */
     @DOpt(type = OptType.Mutator) @AttrRef("phoneNumber")
-    public void setPhoneNumber(String phoneNumber) {
+    public boolean setPhoneNumber(String phoneNumber) {
         if(validatePhoneNumber(phoneNumber)) {
             this.phoneNumber = phoneNumber;
+            return true;
         }
         else
-            throw new NotPossibleException("Student.setPhoneNumber: invalid phoneNumber: "+ phoneNumber);
+            return false;
     }
 
     /**
@@ -104,12 +106,13 @@ public class Student implements Comparable<Student>, Document {
      *      throws NotPossibleException
      */
     @DOpt(type = OptType.Mutator) @AttrRef("address")
-    public void setAddress(String address) {
+    public boolean setAddress(String address) {
         if(validateAddress(address)) {
             this.address = address;
+            return true;
         }
         else
-            throw new NotPossibleException("Student.setAddress: invalid address: "+ address);
+            return false;
     }
 
     /**
@@ -275,6 +278,12 @@ public class Student implements Comparable<Student>, Document {
         return v2.getName().compareTo(v1.getName());
     }
 
+
+    /**
+     *
+     * @effects
+     *  return a String containing the text of a simple HTML document generated from the state of the current object
+     */
     @Override
     public String toHtmlDoc() {
         if (this.getClass().getSimpleName() == "UndergradStudent") {
