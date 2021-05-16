@@ -24,7 +24,7 @@ public class Xref {
   public static void main(String[] args) {
     Xref prog = new Xref();
     
-    String path = "/C:/BUM BUM/IT/Project Java/NNNNNNNNN/out/production/NNNNNNNNN/xref3/compiler.txt";
+    String path = "/C:/Users/Administrator/Desktop/Git/Hung-and-Khoa/NNNNNNNNN/xref3/compiler.txt";
     String doc = FileHandler.getFile(path);
     Map<Word,List<Integer>> wm = prog.indexDocument(doc);
 
