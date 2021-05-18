@@ -43,45 +43,51 @@ class Engine:
         bt.start()
         bt.join()
 
-    def cancel_with_only_courses(self, window):
-        window.destroy()
-        messagebox.showinfo(message="Good bye!")
-        with open('students.dat', 'wb') as new_zip2:
-            self.create_background_thread(mode="dump", pickled_file=new_zip2,
-                                          dumped_obj=len(self.students))
-            self.create_background_thread(mode="dump", pickled_file=new_zip2,
-                                          dumped_obj=len(self.courses))
-            for course in self.courses:
+    # Function to be called when only courses have been input, no students yet
+    def cancel_in_phase_1(self, window, event=None):
+        if self.number_of_courses != 0 and self.number_of_students == 0:
+            messagebox.showinfo(message="Good bye!")
+            window.destroy()
+            with open('students.dat', 'wb') as new_zip2:
                 self.create_background_thread(mode="dump", pickled_file=new_zip2,
-                                              dumped_obj=course)
-            self.create_background_thread(mode="dump", pickled_file=new_zip2,
-                                          dumped_obj=len(self.marks))
-        exit()
+                                              dumped_obj=len(self.students))
+                self.create_background_thread(mode="dump", pickled_file=new_zip2,
+                                              dumped_obj=len(self.courses))
+                for course in self.courses:
+                    self.create_background_thread(mode="dump", pickled_file=new_zip2,
+                                                  dumped_obj=course)
+                self.create_background_thread(mode="dump", pickled_file=new_zip2,
+                                              dumped_obj=len(self.marks))
+            exit()
+        elif self.number_of_courses == 0 and self.number_of_students != 0:
+            messagebox.showinfo(message="Good bye!")
+            window.destroy()
+            with open('students.dat', 'wb') as new_zip2:
+                self.create_background_thread(mode="dump", pickled_file=new_zip2,
+                                              dumped_obj=len(self.students))
+                for student in self.students:
+                    self.create_background_thread(mode="dump", pickled_file=new_zip2,
+                                                  dumped_obj=student)
+                self.create_background_thread(mode="dump", pickled_file=new_zip2,
+                                              dumped_obj=len(self.courses))
+                self.create_background_thread(mode="dump", pickled_file=new_zip2,
+                                              dumped_obj=len(self.marks))
+            exit()
+        elif self.number_of_courses == 0 and self.number_of_students == 0:
+            messagebox.showinfo(message="Good bye!")
+            window.destroy()
+            exit()
 
-    def engine_input_number_of_students_and_student_information(self, window):
+    # Function to be called to input number of students, then input students information
+    def engine_input_number_of_students_and_student_information(self, window, event=None):
         self.__input.input_number_of_students(self, window)
         for i in range(self.number_of_students):
-            # print(f"Student #{i + 1}:")
             self.__input.input_student_information(self, window, (i + 1))
         if len(self.courses) > 0:
             window.destroy()
 
-    def cancel_with_only_students(self, window):
-        window.destroy()
-        messagebox.showinfo(message="Good bye!")
-        with open('students.dat', 'wb') as new_zip2:
-            self.create_background_thread(mode="dump", pickled_file=new_zip2,
-                                          dumped_obj=len(self.students))
-            for student in self.students:
-                self.create_background_thread(mode="dump", pickled_file=new_zip2,
-                                              dumped_obj=student)
-            self.create_background_thread(mode="dump", pickled_file=new_zip2,
-                                          dumped_obj=len(self.courses))
-            self.create_background_thread(mode="dump", pickled_file=new_zip2,
-                                          dumped_obj=len(self.marks))
-        exit()
-
-    def engine_input_number_of_courses_and_course_information(self, window):
+    # Function to be called to input number of courses, then input courses information
+    def engine_input_number_of_courses_and_course_information(self, window, event=None):
         self.__input.input_number_of_courses(self, window)
         for i in range(self.number_of_courses):
             # print(f"Course #{i + 1}:")
@@ -89,38 +95,16 @@ class Engine:
         if len(self.students) > 0:
             window.destroy()
 
-    def engine_input_mark_for_a_course(self, window):
+    # Function to be called to input mark for a course
+    def engine_input_mark_for_a_course(self, window, event=None):
         self.__input.input_mark(self, window)
         if len(self.marks) == len(self.students) * len(self.courses):
             window.destroy()
 
-    def cancel_in_phase_2(self, window):
-        window.destroy()
+    # Cancel when
+    def cancel_in_phase_2_and_3(self, window, event=None):
         messagebox.showinfo(message="Good bye!")
-        with open('students.dat', 'wb') as new_zip2:
-            # pickle.dump(len(self.students), new_zip2)
-            self.create_background_thread(mode="dump", pickled_file=new_zip2,
-                                          dumped_obj=len(self.students))
-            for student in self.students:
-                # pickle.dump(student, new_zip2)
-                self.create_background_thread(mode="dump", pickled_file=new_zip2, dumped_obj=student)
-            # pickle.dump(len(self.courses), new_zip2)
-            self.create_background_thread(mode="dump", pickled_file=new_zip2,
-                                          dumped_obj=len(self.courses))
-            for course in self.courses:
-                # pickle.dump(course, new_zip2)
-                self.create_background_thread(mode="dump", pickled_file=new_zip2, dumped_obj=course)
-            # pickle.dump(len(self.marks), new_zip2)
-            self.create_background_thread(mode="dump", pickled_file=new_zip2,
-                                          dumped_obj=len(self.marks))
-            for mark in self.marks:
-                # pickle.dump(mark, new_zip2)
-                self.create_background_thread(mode="dump", pickled_file=new_zip2, dumped_obj=mark)
-        exit()
-
-    def cancel_in_phase_3(self, window):
         window.destroy()
-        messagebox.showinfo(message="Good bye!")
         with open('students.dat', 'wb') as new_zip:
             # pickle.dump(len(self.students), new_zip)
             self.create_background_thread(mode="dump", pickled_file=new_zip, dumped_obj=len(self.students))
@@ -138,6 +122,28 @@ class Engine:
                 # pickle.dump(mark, new_zip)
                 self.create_background_thread(mode="dump", pickled_file=new_zip, dumped_obj=mark)
         exit()
+
+    #
+    # def cancel_in_phase_3(self, window):
+    #     messagebox.showinfo(message="Good bye!")
+    #     window.destroy()
+    #     with open('students.dat', 'wb') as new_zip:
+    #         # pickle.dump(len(self.students), new_zip)
+    #         self.create_background_thread(mode="dump", pickled_file=new_zip, dumped_obj=len(self.students))
+    #         for student in self.students:
+    #             # pickle.dump(student, new_zip)
+    #             self.create_background_thread(mode="dump", pickled_file=new_zip, dumped_obj=student)
+    #         # pickle.dump(len(self.courses), new_zip)
+    #         self.create_background_thread(mode="dump", pickled_file=new_zip, dumped_obj=len(self.courses))
+    #         for course in self.courses:
+    #             # pickle.dump(course, new_zip)
+    #             self.create_background_thread(mode="dump", pickled_file=new_zip, dumped_obj=course)
+    #         # pickle.dump(len(self.marks), new_zip)
+    #         self.create_background_thread(mode="dump", pickled_file=new_zip, dumped_obj=len(self.marks))
+    #         for mark in self.marks:
+    #             # pickle.dump(mark, new_zip)
+    #             self.create_background_thread(mode="dump", pickled_file=new_zip, dumped_obj=mark)
+    #     exit()
 
     # A method to start the program
     def start_engine(self):
@@ -179,30 +185,33 @@ class Engine:
                 #   Else
                 #       Ask the user to input students data or exit.
                 # self.number_of_students = pickle.load(new_zip)
-                self.create_background_thread(mode="load", pickled_file=new_zip, loaded_array=self.list_of_numbers)
-                self.number_of_students = self.list_of_numbers[0]
-                if not self.number_of_students == 0:
-                    for i in range(self.number_of_students):
-                        # student = pickle.load(new_zip)
-                        # self.students.append(student)
-                        # self.students_id.append(student.get_sid())
-                        self.create_background_thread(mode="load", pickled_file=new_zip, loaded_array=self.students)
-                        self.students_id.append(self.students[i].get_sid())
-                else:
-                    phase1_window = tk.Tk()
-                    phase1_window.title("Student Manager")
-                    phase1_window.resizable(height=False, width=False)
-                    phase1_window.eval('tk::PlaceWindow . center')
-                    logo_lbl = tk.Label(text="Student Manager", font="Fixedsys 30 bold", master=phase1_window)
-                    logo_lbl.grid(row=0, column=0, padx=30, pady=30)
-                    btn1 = tk.Button(text="Input number of students and students information",
-                                     command=lambda: self.engine_input_number_of_students_and_student_information(
-                                         phase1_window), master=phase1_window)
-                    btn2 = tk.Button(text="Cancel", command=lambda: self.cancel_with_only_courses(phase1_window),
-                                     master=phase1_window)
-                    btn1.grid(row=1, column=0, padx=5, pady=5, ipadx=5, ipady=5)
-                    btn2.grid(row=2, column=0, padx=5, pady=5, ipadx=5, ipady=5)
-                    phase1_window.mainloop()
+                while True:
+                    self.create_background_thread(mode="load", pickled_file=new_zip, loaded_array=self.list_of_numbers)
+                    self.number_of_students = self.list_of_numbers[0]
+                    if not self.number_of_students == 0:
+                        for i in range(self.number_of_students):
+                            # student = pickle.load(new_zip)
+                            # self.students.append(student)
+                            # self.students_id.append(student.get_sid())
+                            self.create_background_thread(mode="load", pickled_file=new_zip, loaded_array=self.students)
+                            self.students_id.append(self.students[i].get_sid())
+                        break
+                    else:
+                        phase1_window = tk.Tk()
+                        phase1_window.title("Student Manager")
+                        phase1_window.resizable(height=False, width=False)
+                        phase1_window.eval('tk::PlaceWindow . center')
+                        logo_lbl = tk.Label(text="Student Manager", font="Fixedsys 30 bold", master=phase1_window)
+                        logo_lbl.grid(row=0, column=0, padx=30, pady=30)
+                        btn1 = tk.Button(text="Input number of students and students information",
+                                         command=lambda: self.engine_input_number_of_students_and_student_information(
+                                             phase1_window), master=phase1_window)
+                        btn2 = tk.Button(text="Cancel", command=lambda: self.cancel_in_phase_1(phase1_window),
+                                         master=phase1_window)
+                        btn1.grid(row=1, column=0, padx=5, pady=5, ipadx=5, ipady=5)
+                        btn2.grid(row=2, column=0, padx=5, pady=5, ipadx=5, ipady=5)
+                        phase1_window.mainloop()
+                        break
 
                 # Check if there are data of courses.
                 #   If yes
@@ -212,10 +221,12 @@ class Engine:
                 # self.number_of_courses = pickle.load(new_zip)
                 self.create_background_thread(mode="load", pickled_file=new_zip, loaded_array=self.list_of_numbers)
                 self.number_of_courses = self.list_of_numbers[1]
+                print(self.number_of_courses)
                 if not self.number_of_courses == 0:
                     for i in range(self.number_of_courses):
                         self.create_background_thread(mode="load", pickled_file=new_zip, loaded_array=self.courses)
                         self.courses_id.append(self.courses[i].get_cid())
+                    print(cid for cid in self.courses_id)
                 else:
                     phase1_window = tk.Tk()
                     phase1_window.title("Student Manager")
@@ -226,7 +237,7 @@ class Engine:
                     btn1 = tk.Button(text="Input number of courses and courses information",
                                      command=lambda: self.engine_input_number_of_courses_and_course_information(
                                          phase1_window), master=phase1_window)
-                    btn2 = tk.Button(text="Cancel", command=lambda: self.cancel_with_only_students(phase1_window),
+                    btn2 = tk.Button(text="Cancel", command=lambda: self.cancel_in_phase_1(phase1_window),
                                      master=phase1_window)
                     btn1.grid(row=1, column=0, padx=5, pady=5, ipadx=5, ipady=5)
                     btn2.grid(row=2, column=0, padx=5, pady=5, ipadx=5, ipady=5)
@@ -243,7 +254,93 @@ class Engine:
                 if not number_of_mark_objects == 0:
                     for i in range(number_of_mark_objects):
                         self.create_background_thread(mode="load", pickled_file=new_zip, loaded_array=self.marks)
+                elif len(self.marks) < len(self.students) * len(self.courses):
+                    phase2_window = tk.Tk()
+                    phase2_window.title("Student Manager")
+                    phase2_window.resizable(height=False, width=False)
+                    phase2_window.eval('tk::PlaceWindow . center')
+                    logo_lbl = tk.Label(text="Student Manager", font="Fixedsys 30 bold", master=phase2_window)
+                    logo_lbl.grid(row=0, column=0, padx=30, pady=30)
+                    btn1 = tk.Button(text="Input mark for a course", master=phase2_window,
+                                     command=lambda: self.engine_input_mark_for_a_course(phase2_window))
+                    btn1.bind("<Return>", lambda: self.engine_input_mark_for_a_course(phase2_window))
+                    btn2 = tk.Button(text="List students", master=phase2_window,
+                                     command=lambda: self.get_output().list_students(self, phase2_window))
+                    btn2.bind("<Return>", lambda: self.get_output().list_students(self, phase2_window))
+                    btn3 = tk.Button(text="List courses", master=phase2_window,
+                                     command=lambda: self.get_output().list_courses(self, phase2_window))
+                    btn3.bind("<Return>", lambda: self.get_output().list_courses(self, phase2_window))
+                    btn4 = tk.Button(text="Cancel", master=phase2_window,
+                                     command=lambda: self.cancel_in_phase_2_and_3(phase2_window))
+                    btn4.bind("<Return>", lambda: self.cancel_in_phase_2_and_3(phase2_window))
+                    btn1.grid(row=1, column=0, padx=5, pady=5, ipadx=5, ipady=5)
+                    btn2.grid(row=2, column=0, padx=5, pady=5, ipadx=5, ipady=5)
+                    btn3.grid(row=3, column=0, padx=5, pady=5, ipadx=5, ipady=5)
+                    btn4.grid(row=4, column=0, padx=5, pady=5, ipadx=5, ipady=5)
+                    phase2_window.mainloop()
+                else:
+                    # Jump directly to choice 4 (Use the data from students.dat and skip all the input parts)
+                    phase3_window = tk.Tk()
+                    phase3_window.title("Student Manager")
+                    phase3_window.resizable(height=False, width=False)
+                    phase3_window.eval('tk::PlaceWindow . center')
+                    logo_lbl = tk.Label(text="Student Manager", font="Fixedsys 30 bold", master=phase3_window)
+                    logo_lbl.grid(row=0, column=0, padx=30, pady=30)
+                    btn1 = tk.Button(text="List students", master=phase3_window,
+                                     command=lambda: self.get_output().list_students(self, phase3_window))
+                    btn1.bind("<Return>", lambda: self.get_output().list_students(self, phase3_window))
+                    btn2 = tk.Button(text="List courses", master=phase3_window,
+                                     command=lambda: self.get_output().list_courses(self, phase3_window))
+                    btn2.bind("<Return>", lambda: self.get_output().list_courses(self, phase3_window))
+                    btn3 = tk.Button(text="Show marks of a course", master=phase3_window,
+                                     command=lambda: self.get_output().list_marks(self, phase3_window))
+                    btn3.bind("<Return>", lambda: self.get_output().list_marks(self, phase3_window))
+                    btn4 = tk.Button(text="Calculate GPA for a student", master=phase3_window,
+                                     command=lambda: self.get_output().calculate_gpa(self, phase3_window))
+                    btn4.bind("<Return>", lambda: self.get_output().calculate_gpa(self, phase3_window))
+                    btn5 = tk.Button(text="Print a sorted student list by GPA descending", master=phase3_window,
+                                     command=lambda: self.get_output().print_sorted_list(self, phase3_window))
+                    btn5.bind("<Return>", lambda: self.get_output().print_sorted_list(self, phase3_window))
+                    btn6 = tk.Button(text="Cancel", master=phase3_window,
+                                     command=lambda: self.cancel_in_phase_2_and_3(phase3_window))
+                    btn6.bind("<Return>", lambda: self.cancel_in_phase_2_and_3(phase3_window))
+                    btn1.grid(row=1, column=0, padx=5, pady=5, ipadx=5, ipady=5)
+                    btn2.grid(row=2, column=0, padx=5, pady=5, ipadx=5, ipady=5)
+                    btn3.grid(row=3, column=0, padx=5, pady=5, ipadx=5, ipady=5)
+                    btn4.grid(row=4, column=0, padx=5, pady=5, ipadx=5, ipady=5)
+                    btn5.grid(row=5, column=0, padx=5, pady=5, ipadx=5, ipady=5)
+                    btn6.grid(row=6, column=0, padx=5, pady=5, ipadx=5, ipady=5)
+                    phase3_window.mainloop()
 
+        while True:
+            if self.number_of_students == 0 or self.number_of_courses == 0:
+                phase1_window = tk.Tk()
+                phase1_window.title("Student Manager")
+                phase1_window.resizable(height=False, width=False)
+                phase1_window.eval('tk::PlaceWindow . center')
+                logo_lbl = tk.Label(text="Student Manager", font="Fixedsys 30 bold", master=phase1_window)
+                logo_lbl.grid(row=0, column=0, padx=30, pady=30)
+                btn1 = tk.Button(text="Input number of students and students information",
+                                 command=lambda: self.engine_input_number_of_students_and_student_information(
+                                     phase1_window),
+                                 master=phase1_window)
+                btn1.bind("<Return>", lambda: self.engine_input_number_of_students_and_student_information(
+                    phase1_window))
+                btn2 = tk.Button(text="Input number of courses and courses information",
+                                 command=lambda: self.engine_input_number_of_courses_and_course_information(
+                                     phase1_window),
+                                 master=phase1_window)
+                btn2.bind("<Return>", lambda: self.engine_input_number_of_courses_and_course_information(
+                    phase1_window))
+                btn3 = tk.Button(text="Cancel", master=phase1_window,
+                                 command=lambda: self.cancel_in_phase_1(phase1_window))
+                btn3.bind("<Return>", lambda: self.cancel_in_phase_1(phase1_window))
+                btn1.grid(row=1, column=0, padx=5, pady=5, ipadx=5, ipady=5)
+                btn2.grid(row=2, column=0, padx=5, pady=5, ipadx=5, ipady=5)
+                btn3.grid(row=3, column=0, padx=5, pady=5, ipadx=5, ipady=5)
+                phase1_window.mainloop()
+
+            elif len(self.marks) < len(self.students) * len(self.courses):
                 phase2_window = tk.Tk()
                 phase2_window.title("Student Manager")
                 phase2_window.resizable(height=False, width=False)
@@ -252,80 +349,23 @@ class Engine:
                 logo_lbl.grid(row=0, column=0, padx=30, pady=30)
                 btn1 = tk.Button(text="Input mark for a course", master=phase2_window,
                                  command=lambda: self.engine_input_mark_for_a_course(phase2_window))
+                btn1.bind("<Return>", lambda: self.engine_input_mark_for_a_course(phase2_window))
                 btn2 = tk.Button(text="List students", master=phase2_window,
                                  command=lambda: self.get_output().list_students(self, phase2_window))
+                btn2.bind("<Return>", lambda: self.get_output().list_students(self, phase2_window))
                 btn3 = tk.Button(text="List courses", master=phase2_window,
                                  command=lambda: self.get_output().list_courses(self, phase2_window))
-                btn4 = tk.Button(text="Cancel", master=phase2_window, command=lambda: self.cancel_in_phase_2(phase2_window))
+                btn3.bind("<Return>", lambda: self.get_output().list_courses(self, phase2_window))
+                btn4 = tk.Button(text="Cancel", master=phase2_window,
+                                 command=lambda: self.cancel_in_phase_2_and_3(phase2_window))
+                btn4.bind("<Return>", lambda: self.cancel_in_phase_2_and_3(phase2_window))
                 btn1.grid(row=1, column=0, padx=5, pady=5, ipadx=5, ipady=5)
                 btn2.grid(row=2, column=0, padx=5, pady=5, ipadx=5, ipady=5)
                 btn3.grid(row=3, column=0, padx=5, pady=5, ipadx=5, ipady=5)
                 btn4.grid(row=4, column=0, padx=5, pady=5, ipadx=5, ipady=5)
                 phase2_window.mainloop()
-
-            # Jump directly to choice 4 (Use the data from students.dat and skip all the input parts)
-            phase3_window = tk.Tk()
-            phase3_window.title("Student Manager")
-            phase3_window.resizable(height=False, width=False)
-            phase3_window.eval('tk::PlaceWindow . center')
-            logo_lbl = tk.Label(text="Student Manager", font="Fixedsys 30 bold", master=phase3_window)
-            logo_lbl.grid(row=0, column=0, padx=30, pady=30)
-            btn1 = tk.Button(text="List students", master=phase3_window,
-                             command=lambda: self.get_output().list_students(self, phase3_window))
-            btn2 = tk.Button(text="List courses", master=phase3_window,
-                             command=lambda: self.get_output().list_courses(self, phase3_window))
-            btn3 = tk.Button(text="Show marks of a course", master=phase3_window,
-                             command=lambda: self.get_output().list_marks(self, phase3_window))
-            btn4 = tk.Button(text="Calculate GPA for a student", master=phase3_window,
-                             command=lambda: self.get_output().calculate_gpa(self, phase3_window))
-            btn5 = tk.Button(text="Print a sorted student list by GPA descending", master=phase3_window,
-                             command=lambda: self.get_output().print_sorted_list(self, phase3_window))
-            btn6 = tk.Button(text="Cancel", master=phase3_window, command=lambda: self.cancel_in_phase_3(phase3_window))
-            btn1.grid(row=1, column=0, padx=5, pady=5, ipadx=5, ipady=5)
-            btn2.grid(row=2, column=0, padx=5, pady=5, ipadx=5, ipady=5)
-            btn3.grid(row=3, column=0, padx=5, pady=5, ipadx=5, ipady=5)
-            btn4.grid(row=4, column=0, padx=5, pady=5, ipadx=5, ipady=5)
-            btn5.grid(row=5, column=0, padx=5, pady=5, ipadx=5, ipady=5)
-            btn6.grid(row=6, column=0, padx=5, pady=5, ipadx=5, ipady=5)
-            phase3_window.mainloop()
-
-        phase1_window = tk.Tk()
-        phase1_window.title("Student Manager")
-        phase1_window.resizable(height=False, width=False)
-        phase1_window.eval('tk::PlaceWindow . center')
-        logo_lbl = tk.Label(text="Student Manager", font="Fixedsys 30 bold", master=phase1_window)
-        logo_lbl.grid(row=0, column=0, padx=30, pady=30)
-        btn1 = tk.Button(text="Input number of students and students information",
-                         command=lambda: self.engine_input_number_of_students_and_student_information(phase1_window),
-                         master=phase1_window)
-        btn2 = tk.Button(text="Input number of courses and courses information",
-                         command=lambda: self.engine_input_number_of_courses_and_course_information(phase1_window),
-                         master=phase1_window)
-        btn3 = tk.Button(text="Cancel", command=exit, master=phase1_window)
-        btn1.grid(row=1, column=0, padx=5, pady=5, ipadx=5, ipady=5)
-        btn2.grid(row=2, column=0, padx=5, pady=5, ipadx=5, ipady=5)
-        btn3.grid(row=3, column=0, padx=5, pady=5, ipadx=5, ipady=5)
-        phase1_window.mainloop()
-
-        phase2_window = tk.Tk()
-        phase2_window.title("Student Manager")
-        phase2_window.resizable(height=False, width=False)
-        phase2_window.eval('tk::PlaceWindow . center')
-        logo_lbl = tk.Label(text="Student Manager", font="Fixedsys 30 bold", master=phase2_window)
-        logo_lbl.grid(row=0, column=0, padx=30, pady=30)
-        btn1 = tk.Button(text="Input mark for a course", master=phase2_window,
-                         command=lambda: self.engine_input_mark_for_a_course(phase2_window))
-        btn2 = tk.Button(text="List students", master=phase2_window,
-                         command=lambda: self.get_output().list_students(self, phase2_window))
-        btn3 = tk.Button(text="List courses", master=phase2_window,
-                         command=lambda: self.get_output().list_courses(self, phase2_window))
-        btn4 = tk.Button(text="Cancel", master=phase2_window, command=lambda: self.cancel_in_phase_2(phase2_window))
-        btn1.grid(row=1, column=0, padx=5, pady=5, ipadx=5, ipady=5)
-        btn2.grid(row=2, column=0, padx=5, pady=5, ipadx=5, ipady=5)
-        btn3.grid(row=3, column=0, padx=5, pady=5, ipadx=5, ipady=5)
-        btn4.grid(row=4, column=0, padx=5, pady=5, ipadx=5, ipady=5)
-        phase2_window.mainloop()
-
+            else:
+                break
         phase3_window = tk.Tk()
         phase3_window.title("Student Manager")
         phase3_window.resizable(height=False, width=False)
@@ -334,15 +374,22 @@ class Engine:
         logo_lbl.grid(row=0, column=0, padx=30, pady=30)
         btn1 = tk.Button(text="List students", master=phase3_window,
                          command=lambda: self.get_output().list_students(self, phase3_window))
+        btn1.bind("<Return>", lambda: self.get_output().list_students(self, phase3_window))
         btn2 = tk.Button(text="List courses", master=phase3_window,
                          command=lambda: self.get_output().list_courses(self, phase3_window))
+        btn2.bind("<Return>", lambda: self.get_output().list_courses(self, phase3_window))
         btn3 = tk.Button(text="Show marks of a course", master=phase3_window,
                          command=lambda: self.get_output().list_marks(self, phase3_window))
+        btn3.bind("<Return>", lambda: self.get_output().list_marks(self, phase3_window))
         btn4 = tk.Button(text="Calculate GPA for a student", master=phase3_window,
                          command=lambda: self.get_output().calculate_gpa(self, phase3_window))
+        btn4.bind("<Return>", lambda: self.get_output().calculate_gpa(self, phase3_window))
         btn5 = tk.Button(text="Print a sorted student list by GPA descending", master=phase3_window,
                          command=lambda: self.get_output().print_sorted_list(self, phase3_window))
-        btn6 = tk.Button(text="Cancel", master=phase3_window, command=lambda: self.cancel_in_phase_3(phase3_window))
+        btn5.bind("<Return>", lambda: self.get_output().print_sorted_list(self, phase3_window))
+        btn6 = tk.Button(text="Cancel", master=phase3_window,
+                         command=lambda: self.cancel_in_phase_2_and_3(phase3_window))
+        btn6.bind("<Return>", lambda: self.cancel_in_phase_2_and_3(phase3_window))
         btn1.grid(row=1, column=0, padx=5, pady=5, ipadx=5, ipady=5)
         btn2.grid(row=2, column=0, padx=5, pady=5, ipadx=5, ipady=5)
         btn3.grid(row=3, column=0, padx=5, pady=5, ipadx=5, ipady=5)

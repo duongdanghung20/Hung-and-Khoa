@@ -20,7 +20,7 @@ class Output:
         lbl1.grid(row=0, column=0)
         for course in engine.courses:
             course_lbl = tk.Label(
-                text="\t\t[%s]   %-20s%d credits" % (course.get_cid(), course.get_name(), course.get_credit()),
+                text="[%s]   %-20s%d credits" % (course.get_cid(), course.get_name(), course.get_credit()),
                 master=sub)
             course_lbl.grid(row=(engine.courses.index(course) + 1), column=0)
 
@@ -37,7 +37,7 @@ class Output:
         lbl1.grid(row=0, column=0)
         for student in engine.students:
             student_lbl = tk.Label(
-                text="\t\t[%s]    %-20s%s" % (student.get_sid(), student.get_name(), student.get_dob()), master=sub)
+                text="[%s]    %-20s%s" % (student.get_sid(), student.get_name(), student.get_dob()), master=sub)
             student_lbl.grid(row=(engine.students.index(student) + 1), column=0)
 
     # List all students with their marks for a specific course
@@ -61,7 +61,7 @@ class Output:
                 for student in engine.students:
                     if student.get_sid() == sid:
                         mark_lbl = tk.Label(
-                            text=f"\n\t\t[%s]    %-20s%s" % (student.get_sid(), student.get_name(), mark.get_value()),
+                            text=f"[%s]    %-20s%s" % (student.get_sid(), student.get_name(), mark.get_value()),
                             master=sub)
                         mark_lbl.grid(row=(engine.students.index(student) + 1), column=0)
 
@@ -86,14 +86,15 @@ class Output:
         frm1.grid(row=0, column=0, padx=10, pady=10)
         cid_lbl = tk.Label(text=f"Enter the course ID you want to list marks:", master=frm1)
         cid_var = tk.StringVar()
-        cid_ent = tk.Entry(width=7, master=frm1, textvariable=cid_var)
+        cid_ent = tk.Entry(width=10, master=frm1, textvariable=cid_var)
+        cid_ent.focus_set()
         cid_lbl.grid(row=0, column=0, padx=5)
         cid_ent.grid(row=0, column=1, padx=5)
 
         frm2 = tk.Frame(master=sub)
         frm2.grid(row=1, column=0, sticky="nsew", padx=5, pady=5)
 
-        def ok(input_obj):
+        def ok(input_obj, event=None):
             cid = cid_var.get()
             if len(cid) == 0 or cid is None:
                 messagebox.showinfo(message="Error: Course ID cannot be empty.")
@@ -104,8 +105,11 @@ class Output:
                 input_obj.list_course_marks(engine, cid, window)
                 sub.destroy()
 
+        sub.bind("<Return>", lambda: ok(self))
         ok_btn = tk.Button(text="OK", master=frm2, command=lambda: ok(self))
-        ok_btn.pack(ipadx=5, ipady=5)
+        ok_btn.bind("<Return>", lambda: ok(self))
+        ok_btn.pack(ipadx=5)
+        sub.wait_window(sub)
 
     # A function to calculate average GPA for a specific student
     def calculate_student_gpa(self, engine, sid):
@@ -147,19 +151,20 @@ class Output:
         frm1.grid(row=0, column=0, padx=10, pady=10)
         sid_lbl = tk.Label(text=f"Enter student ID that requires GPA calculating:", master=frm1)
         sid_var = tk.StringVar()
-        sid_ent = tk.Entry(width=7, master=frm1, textvariable=sid_var)
+        sid_ent = tk.Entry(width=10, master=frm1, textvariable=sid_var)
+        sid_ent.focus_set()
         sid_lbl.grid(row=0, column=0, padx=5)
         sid_ent.grid(row=0, column=1, padx=5)
 
         frm2 = tk.Frame(master=sub)
         frm2.grid(row=1, column=0, sticky="nsew", padx=5, pady=5)
 
-        def ok(input_obj):
+        def ok(input_obj, event=None):
             sid = sid_var.get()
             if len(sid) == 0 or sid is None:
-                messagebox.showinfo(message="Error: Course ID cannot be empty.")
-            elif sid not in engine.courses_id:
-                messagebox.showinfo(message="Error: There exist no course with that ID.")
+                messagebox.showinfo(message="Error: Student ID cannot be empty.")
+            elif sid not in engine.students_id:
+                messagebox.showinfo(message="Error: There exist no student with that ID.")
                 sid_ent.delete(-1, tk.END)
             else:
                 gpa = 0
@@ -172,8 +177,11 @@ class Output:
                 messagebox.showinfo(message=f"GPA of {name} is {gpa}")
                 sub.destroy()
 
+        sub.bind("<Return>", ok)
         ok_btn = tk.Button(text="OK", master=frm2, command=lambda: ok(self))
-        ok_btn.pack(ipadx=5, ipady=5)
+        ok_btn.bind("<Return>", lambda: ok(self))
+        ok_btn.pack(ipadx=5)
+        sub.wait_window(sub)
 
     # A function to print a sorted student list by GPA descending
     def print_sorted_list(self, engine, window):
@@ -202,5 +210,5 @@ class Output:
         lbl1.grid(row=0, column=0)
         for student in new_sorted_student_list:
             # print("\t\t[%s]    %-20sGPA: %s\n" % (student[0], student[1], student[2]))
-            student_lbl = tk.Label(text="\t\t[%s]    %-20sGPA: %s\n" % (student[0], student[1], student[2]), master=sub)
+            student_lbl = tk.Label(text="[%s]    %-20sGPA: %s" % (student[0], student[1], student[2]), master=sub)
             student_lbl.grid(row=(new_sorted_student_list.index(student) + 1), column=0)
