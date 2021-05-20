@@ -188,10 +188,6 @@ class Engine:
                     price_ent.delete(0, tk.END)
                     # Commit changes
                     conn.commit()
-                    c.execute("""SELECT * FROM areas""")
-                    results = c.fetchall()
-                    for result in results:
-                        print(result)
                     # Close connection
                     conn.close()
                 except Error as e:
@@ -245,10 +241,10 @@ class Engine:
                     area_ids = []
                     for result in results:
                         area_ids.append(result[0])
-                    while 
-                    if area_ent.get() not in area_ids:
+                    if int(area_ent.get()) not in area_ids:
                         messagebox.showerror(message="Area ID does not exist")
-                        area_ent.delete(0, tk.END)
+                        sub.destroy()
+                        self.input_households(parent)
                     # Insert into table
                     c.execute(
                         """INSERT INTO households (owner_name, address, phone_number, payment_status, area_id, monthly_consumption) VALUES (:owner_name, :address, :phone_number, :payment_status, :area_id, :monthly_consumption)""",
@@ -270,10 +266,6 @@ class Engine:
                     area_ent.delete(0, tk.END)
                     # Commit changes
                     conn.commit()
-                    c.execute("""SELECT * FROM households""")
-                    results = c.fetchall()
-                    for result in results:
-                        print(result)
                     # Close connection
                     conn.close()
                 except Error as e:
@@ -285,20 +277,85 @@ class Engine:
         except Error as e:
             return e
 
-    def update_household_information_with_id(self, hid):
-        for household in self.households:
-            if hid == household.get_hid():
-                print("Enter again all the household's information:")
-                household.set_hid(input("Enter household ID: "))
-                household.set_name(input("Enter house owner's name: "))
-                household.set_address(input("Enter household's address: "))
-                household.set_area(input("Enter household's area: "))
+    def update_household_information_with_id(self, parent, household_id):
+        try:
+            sub = tk.Toplevel(master=parent)
+            sub.title(f"Update household {household_id}")
+            sub.resizable(height=False, width=False)
 
-    def exist(self, hid):
-        for household in self.households:
-            if hid == household.get_hid():
-                return True
-        return False
+            # Create text entries
+            name_ent = tk.Entry(sub, width=30)
+            name_ent.grid(row=1, column=1, padx=20)
+            address_ent = tk.Entry(sub, width=30)
+            address_ent.grid(row=2, column=1, padx=20)
+            phone_number_ent = tk.Entry(sub, width=30)
+            phone_number_ent.grid(row=3, column=1, padx=20)
+            area_ent = tk.Entry(sub, width=30)
+            area_ent.grid(row=4, column=1, padx=20)
+
+            # Create text labels
+            id_lbl = tk.Label(sub, text=f"Updating Household {household_id}: ")
+            id_lbl.grid(row=0, column=0, columnspan=2)
+            name_lbl = tk.Label(sub, text="Owner's name: ")
+            name_lbl.grid(row=1, column=0)
+            address_lbl = tk.Label(sub, text="Address: ")
+            address_lbl.grid(row=2, column=0)
+            phone_number_lbl = tk.Label(sub, text="Phone number: ")
+            phone_number_lbl.grid(row=3, column=0)
+            area_lbl = tk.Label(sub, text="Area: ")
+            area_lbl.grid(row=4, column=0)
+
+            # Create Submit Function for Database:
+            def submit():
+                try:
+                    # Create the electric.db or connect to it
+                    conn = sqlite3.connect('electric.db')
+                    # Create cursor
+                    c = conn.cursor()
+                    c.execute("PRAGMA foreign_keys = ON")
+                    # Check if area_id exist:
+                    c.execute("""SELECT id FROM areas""")
+                    results = c.fetchall()
+                    area_ids = []
+                    for result in results:
+                        area_ids.append(result[0])
+                    if int(area_ent.get()) not in area_ids:
+                        messagebox.showerror(message="Area ID does not exist")
+                        sub.destroy()
+                        self.input_households(parent)
+                    # Insert into table
+                    print("hello world")
+                    c.execute(
+                        f"""UPDATE household 
+                        SET owner_name = "Khoa",
+                          address = "27 dai la",
+                          phone_number = 1, 
+                          area_id = 1
+                        WHERE id = {household_id}""",
+                        {
+                            'owner_name': name_ent.get(),
+                            'address': address_ent.get(),
+                            'phone_number': phone_number_ent.get(),
+                            'area_id': area_ent.get()
+                        }
+                    )
+                    # Commit changes
+                    conn.commit()
+                    c.execute("""SELECT * FROM households""")
+                    results = c.fetchall()
+                    for result in results:
+                        print(result)
+                    # Close connection
+                    conn.close()
+                except Error as e:
+                    return e
+
+            # Create Submit Button
+            submit_btn = tk.Button(sub, text="Update Record to Database", command=submit)
+            submit_btn.grid(row=5, column=0, columnspan=2, ipadx=5, ipady=5, pady=5, padx=5)
+        except Error as e:
+            return e
+
 
     def update_household_information(self):
         hid = input("Enter ID of the household requires updating: ")
@@ -325,12 +382,66 @@ class Engine:
             self.delete_household_with_id(hid)
             self.delete_meter_with_id(hid)
 
-    def list_households(self):
-        for household in self.households:
-            print(
-                household.get_hid() + "-" + household.get_name() + "-" + household.get_address() + "-" + str(
-                    household.get_area()) + "-" + str(household.get_payment_status()) + "-" + str(
-                    household.get_monthly_consumption()))
+    def list_areas(self, parent):
+        try:
+            sub = tk.Toplevel(master=parent)
+            sub.title(f"Listing areas:")
+            sub.resizable(height=False, width=False)
+
+            title_lbl = tk.Label(sub, text="All areas:")
+            title_lbl.grid(row=0, column=0, columnspan=2)
+
+            self.c.execute("""SELECT * FROM areas""")
+            results = self.c.fetchall()
+            for i in range(len(results)):
+                id_lbl = tk.Label(sub, text=f"{results[i][0]}", borderwidth=1, relief="solid")
+                price_lbl = tk.Label(sub, text=f"{results[i][1]}", borderwidth=1, relief="solid")
+                id_lbl.grid(row=i+1, column=0, sticky="nsew")
+                price_lbl.grid(row=i+1, column=1, sticky="nsew")
+        except Error as e:
+            return e
+
+    def list_households(self, parent):
+        try:
+            sub = tk.Toplevel(master=parent)
+            sub.title(f"Listing households:")
+            sub.resizable(height=False, width=False)
+
+            title_lbl = tk.Label(sub, text="All households:")
+            title_lbl.grid(row=0, column=0, columnspan=7)
+            self.c.execute("""SELECT * FROM households""")
+            results = self.c.fetchall()
+            id_title_lbl = tk.Label(sub, text="ID", borderwidth=1, relief="solid")
+            name_title_lbl = tk.Label(sub, text="Household Owner Name", borderwidth=1, relief="solid")
+            address_title_lbl = tk.Label(sub, text="Address", borderwidth=1, relief="solid")
+            phone_number_title_lbl = tk.Label(sub, text="Phone number", borderwidth=1, relief="solid")
+            payment_status_title_lbl = tk.Label(sub, text="Payment Status", borderwidth=1, relief="solid")
+            area_id_title_lbl = tk.Label(sub, text="Area ID", borderwidth=1, relief="solid")
+            monthly_consumption_title_lbl = tk.Label(sub, text="Monthly consumption", borderwidth=1, relief="solid")
+            id_title_lbl.grid(row=1, column=0, sticky="nsew")
+            name_title_lbl.grid(row=1, column=1, sticky="nsew")
+            address_title_lbl.grid(row=1, column=2, sticky="nsew")
+            phone_number_title_lbl.grid(row=1, column=3, sticky="nsew")
+            payment_status_title_lbl.grid(row=1, column=4, sticky="nsew")
+            area_id_title_lbl.grid(row=1, column=5, sticky="nsew")
+            monthly_consumption_title_lbl.grid(row=1, column=6, sticky="nsew")
+            for i in range(len(results)):
+                id_lbl = tk.Label(sub, text=f"{results[i][0]}", borderwidth=1, relief="solid")
+                name_lbl = tk.Label(sub, text=f"{results[i][1]}", borderwidth=1, relief="solid")
+                address_lbl = tk.Label(sub, text=f"{results[i][2]}", borderwidth=1, relief="solid")
+                phone_number_lbl = tk.Label(sub, text=f"{results[i][3]}", borderwidth=1, relief="solid")
+                payment_status_lbl = tk.Label(sub, text=f"{results[i][4]}", borderwidth=1, relief="solid")
+                area_id_lbl = tk.Label(sub, text=f"{results[i][5]}", borderwidth=1, relief="solid")
+                monthly_consumption_lbl = tk.Label(sub, text=f"{results[i][6]}", borderwidth=1, relief="solid")
+                id_lbl.grid(row=i+2, column=0, sticky="nsew")
+                name_lbl.grid(row=i+2, column=1, sticky="nsew")
+                address_lbl.grid(row=i+2, column=2, sticky="nsew")
+                phone_number_lbl.grid(row=i+2, column=3, sticky="nsew")
+                payment_status_lbl.grid(row=i+2, column=4, sticky="nsew")
+                area_id_lbl.grid(row=i+2, column=5, sticky="nsew")
+                monthly_consumption_lbl.grid(row=i+2, column=6, sticky="nsew")
+        except Error as e:
+            return e
 
     def update_meter_information_with_id(self, hid):
         new_monthly_consumption = 0
@@ -363,11 +474,6 @@ class Engine:
             print("There exist no household with that ID")
         else:
             self.update_payment_status_with_id(hid)
-
-    def input_types_of_price(self):
-        number_of_types = int(input("Enter number of areas: "))
-        for i in range(number_of_types):
-            self.prices.append((i + 1, int(input(f"Enter price for area {i + 1} (VND/kWh): "))))
 
     def auto_increase_payment_status(self):
         for household in self.households:
@@ -435,34 +541,36 @@ class Engine:
         self.c.execute(self.create_areas_table)
         self.c.execute(self.create_households_table)
         self.c.execute(self.create_meters_table)
-        #
-        # root = tk.Tk()
-        # root.title("EIMS")
-        # root.resizable(width=False, height=False)
-        # root.geometry("400x709")
-        # background_img = tk.PhotoImage(file='new_background_img.png')
-        # background_label = tk.Label(master=root, image=background_img)
-        # background_label.place(relwidth=1, relheight=1)
-        # logo_lbl = tk.Label(text="EIMS", font="Fixedsys 60 bold", master=root, fg="white", bg="cornflower blue")
-        # logo_lbl.pack(pady=30, fill=tk.X)
-        # btn1 = tk.Button(text="Input data", master=root, font=("Arial", 16, "bold"), borderwidth=5, width=10, fg="black", bg="light yellow")
-        # btn2 = tk.Button(text="Delete data", master=root, font=("Arial", 16, "bold"), borderwidth=5, width=10, fg="black", bg="light yellow")
-        # btn3 = tk.Button(text="Update data", master=root, font=("Arial", 16, "bold"), borderwidth=5, width=10, fg="black", bg="light yellow")
-        # btn4 = tk.Button(text="Display data", master=root, font=("Arial", 16, "bold"), borderwidth=5, width=10, fg="black", bg="light yellow")
-        # btn5 = tk.Button(text="Plot figures", master=root, font=("Arial", 16, "bold"), borderwidth=5, width=10, fg="black", bg="light yellow")
-        # btn6 = tk.Button(text="Print bill", font=("Arial", 16, "bold"), borderwidth=5, width=10, fg="black", bg="light yellow")
-        # btn7 = tk.Button(text="Exit", master=root, font=("Arial", 16, "bold"), borderwidth=5, width=10, fg="black", bg="light yellow")
-        # btn1.pack(pady=10, ipadx=5, ipady=5)
-        # btn2.pack(pady=10, ipadx=5, ipady=5)
-        # btn3.pack(pady=10, ipadx=5, ipady=5)
-        # btn4.pack(pady=10, ipadx=5, ipady=5)
-        # btn5.pack(pady=10, ipadx=5, ipady=5)
-        # btn6.pack(pady=10, ipadx=5, ipady=5)
-        # btn7.pack(pady=10, ipadx=5, ipady=5)
-        # root.mainloop()
+
         root = tk.Tk()
+        root.title("EIMS")
+        root.resizable(width=False, height=False)
+        root.geometry("400x709")
+        background_img = tk.PhotoImage(file='new_background_img.png')
+        background_label = tk.Label(master=root, image=background_img)
+        background_label.place(relwidth=1, relheight=1)
+        logo_lbl = tk.Label(text="EIMS", font="Fixedsys 60 bold", master=root, fg="white", bg="cornflower blue")
+        logo_lbl.pack(pady=30, fill=tk.X)
+        btn1 = tk.Button(text="Input data", master=root, font=("Arial", 16, "bold"), borderwidth=5, width=10, fg="black", bg="light yellow")
+        btn2 = tk.Button(text="Delete data", master=root, font=("Arial", 16, "bold"), borderwidth=5, width=10, fg="black", bg="light yellow")
+        btn3 = tk.Button(text="Update data", master=root, font=("Arial", 16, "bold"), borderwidth=5, width=10, fg="black", bg="light yellow")
+        btn4 = tk.Button(text="Display data", master=root, font=("Arial", 16, "bold"), borderwidth=5, width=10, fg="black", bg="light yellow")
+        btn5 = tk.Button(text="Plot figures", master=root, font=("Arial", 16, "bold"), borderwidth=5, width=10, fg="black", bg="light yellow")
+        btn6 = tk.Button(text="Print bill", font=("Arial", 16, "bold"), borderwidth=5, width=10, fg="black", bg="light yellow")
+        btn7 = tk.Button(text="Exit", master=root, font=("Arial", 16, "bold"), borderwidth=5, width=10, fg="black", bg="light yellow")
+        btn1.pack(pady=10, ipadx=5, ipady=5)
+        btn2.pack(pady=10, ipadx=5, ipady=5)
+        btn3.pack(pady=10, ipadx=5, ipady=5)
+        btn4.pack(pady=10, ipadx=5, ipady=5)
+        btn5.pack(pady=10, ipadx=5, ipady=5)
+        btn6.pack(pady=10, ipadx=5, ipady=5)
+        btn7.pack(pady=10, ipadx=5, ipady=5)
+
         # self.input_areas(root)
-        self.input_households(root)
+        # self.input_households(root)
+        self.update_household_information_with_id(root, 13)
+        # self.list_households(root)
+        # self.list_areas(root)
         root.mainloop()
 
 
