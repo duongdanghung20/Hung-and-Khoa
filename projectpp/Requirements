@@ -1,0 +1,17 @@
+- compilable
+- GUI
+- Database
+
+Design:
+Use cases:
+1) Input number of households
+2) Input/Delete/Update households' information
+3) Input number of electric companies
+4) Input/Delete/Update electric companies information
+5) Input/Delete/Update amount of power consumption for different months
+6) Input/Delete/Update electric cost in each neighborhood (VND/W)
+7) Calculate amount of money that a household must pay for a month (based on power consumption)
+8) List households (based on electric comsumption)
+9) List electric companies
+10) Show amount of power consumption of households for a month + the amount of money needs to pay
+11) Plot the electric consumptions on a graph
